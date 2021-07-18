@@ -16,19 +16,19 @@ public class AutoGetCompornennt : MonoBehaviour
         {
             if(item.transform.root == transform)
             {
-                Debug.Log(item.gameObject.name);
-            }
-            else
-            {
-                //Debug.Log("???");
+                //Debug.Log(item.gameObject.name);
+                if (item.gameObject.GetComponent<BreakManager>() == null && item.gameObject.GetComponent<Rigidbody>() != null)
+                {
+                    Debug.Log(item.gameObject + "に破壊処理いれたまるー");
+                    item.gameObject.AddComponent<BreakManager>();
+                }
+                else
+                {
+                    Debug.Log("破壊処理はもうありまっせ");
+                }
             }
             
         }
     }
 
-    public void DataSet_Rigidbody()
-    {
-        //Rigidbody rb = game.GetComponent<Rigidbody>();
-        Debug.Log("??");
-    }
 }
