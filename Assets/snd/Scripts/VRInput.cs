@@ -19,6 +19,9 @@ public class VRInput : MonoBehaviour
     public static bool RTrigger { get { return OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger); } }
     public static bool LTrigger { get { return OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger); } }
 
+    public static bool RStickPush { get { return OVRInput.GetDown(OVRInput.RawButton.RThumbstickDown); } }
+    public static bool LStickPush { get { return OVRInput.GetDown(OVRInput.RawButton.LThumbstickDown); } }
+
     #endregion
 
     #region Press
