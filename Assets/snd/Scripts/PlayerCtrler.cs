@@ -1,16 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.XR;
 public class PlayerCtrler : MonoBehaviour
 {
 
-    [SerializeField, Range(0, 100)]
+    [SerializeField]
     public float _speed;
 
 
-    [SerializeField, Range(0, 100)]
+    [SerializeField]
     public float _jumpForce;
+
+    public bool _IsGround = true;
+
+    RaycastHit _hit;
+
+    //何m浮いたらジャンプとみなすか
+    public float _GroundThre;
 
     public Rigidbody _rigidbody;
 
@@ -19,7 +26,7 @@ public class PlayerCtrler : MonoBehaviour
     //Weapon _weapon1;
     //Weapon _weapon2;
 
-    public AbilitySuper _ability;
+    public Ability _ability;
 
 
     // Start is called before the first frame update
@@ -27,47 +34,98 @@ public class PlayerCtrler : MonoBehaviour
     {
         _status = GetComponent<PlayerStatus>();
         _rigidbody = GetComponent<Rigidbody>();
-        //デフォルトのアビリティはスピードアップ
-        SpeedUPAbi speed = new SpeedUPAbi();
-        _ability= gameObject.AddComponent<SpeedUPAbi>();
-        _ability._player = this;
-        _ability.ChangeAbility(speed);
-
+        _ability = GetComponent<Ability>();
+        _GroundThre = 0.3f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_ability);
-
-
-        if(_ability != null)
-        {
-            _ability.UseAbility();
-        }
-        
         PlayerMove();
     }
 
     public void PlayerMove()
-    { 
-        Vector3 velocity = new Vector3(OVRInput.Get(OVRInput.RawAxis2D.LThumbstick).x, 0, OVRInput.Get(OVRInput.RawAxis2D.LThumbstick).y);
-        velocity = transform.TransformDirection(velocity);
-        transform.localPosition += velocity*_speed * Time.fixedDeltaTime;
-
-        if (VRInput.A)
-        {
-            _rigidbody.AddForce(Vector3.up * _jumpForce * Time.deltaTime);
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<AbilitySuper>())
+        Vector3 velocity = new Vector3(VRInput.LStick.x, 0, VRInput.LStick.y);
+        Vector3 rotation = new Vector3(0, InputTracking.GetLocalRotation(XRNode.Head).eulerAngles.y, 0);
+
+        _rigidbody.AddForce(transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed * Time.deltaTime), ForceMode.Acceleration);
+
+        if (VRInput.RGripPress || VRInput.LGripPress)
         {
-
+            
+            _rigidbody.AddForce(Vector3.up * _jumpForce / 100, ForceMode.Acceleration);
         }
-    }
 
+        if (VRInput.RStickPush)
+        {
+            Debug.Log("右手武器切り替え");
+        }
+        if (VRInput.LStickPush)
+        {
+            Debug.Log("左手武器切り替え");
+        }
+
+        if (VRInput.Y)
+        {
+            Debug.Log("左手武器リロード");
+        }
+        if (VRInput.B)
+        {
+            Debug.Log("右手武器リロード");
+        }
+
+
+        // _rigidbody.position += ;
+        /*
+         if (!_ability._flyable)
+         {
+             if (VRInput.A)
+             {
+                 //ハイパー雑な着地判定
+                 if(Physics.Raycast(transform.position - new Vector3(0,0.8f,0), Vector3.down, _GroundThre))
+                 {
+                     _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+                 }
+
+             }
+         }
+         else
+         {*/
+
+        // }
+
+        /*
+         * 緊急姿勢制御
+        if (VRInput.RStickPush && transform.rotation.eulerAngles.magnitude > 15)
+        {
+            transform.position = new Vector3(transform.position.x, 2, transform.position.z);
+            transform.rotation = Quaternion.Euler(Vector3.zero);
+        }*/
+        /*
+        if(武器がセミオートなら)
+        {
+            if(VRInput.RTrigger)
+            {
+                射撃   
+            }
+            if(VRInput.LTrigger)
+            {
+                射撃   
+            }
+        }
+        if(武器がフルオートなら)
+        {
+            if(VRInput.RTriggerPress)
+            {
+                射撃   
+            }
+            if(VRInput.LTriggerPress)
+            {
+                射撃   
+            }
+        }
+        */
+    }
 
 }
