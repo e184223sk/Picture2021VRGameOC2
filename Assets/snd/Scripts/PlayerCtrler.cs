@@ -21,18 +21,12 @@ public class PlayerCtrler : MonoBehaviour
 
     public Rigidbody _rigidbody;
 
-    public PlayerStatus _status;
-
-    //Weapon _weapon1;
-    //Weapon _weapon2;
-
     public Ability _ability;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        _status = GetComponent<PlayerStatus>();
         _rigidbody = GetComponent<Rigidbody>();
         _ability = GetComponent<Ability>();
         _GroundThre = 0.3f;

@@ -45,6 +45,9 @@ The following packages were added:
   com.unity.timeline@1.2.18
   com.unity.ugui@1.0.0
 
+<<<<<<< HEAD
+=== Sun Jul 18 11:42:29 2021
+=======
 === Sun Jul 18 13:27:28 2021
 
 Packages were changed.
@@ -92,6 +95,7 @@ The following packages were added:
   com.unity.ugui@1.0.0
 
 === Sun Jul 18 15:48:58 2021
+>>>>>>> 852eecb2869cd6404688c8140a0ff983641fb19e
 
 Packages were changed.
 Update Mode: resetToDefaultDependencies
