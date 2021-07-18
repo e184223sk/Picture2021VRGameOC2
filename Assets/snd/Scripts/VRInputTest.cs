@@ -13,7 +13,7 @@ public class VRInputTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        /*
         if (VRInput.A) Debug.Log("A押した");
         if (VRInput.B) Debug.Log("B押した");
         if (VRInput.X) Debug.Log("X押した");
@@ -25,6 +25,8 @@ public class VRInputTest : MonoBehaviour
 
         Debug.Log("右スティック　：　" + VRInput.RStick.ToString());
         Debug.Log("左スティック　：　" + VRInput.LStick.ToString());
-
+        */
+        Debug.Log(VRInput.RStickPush ? "右スティック押してる" : "");
+        Debug.Log(VRInput.LStickPush ? "左スティック押してる" : "");
     }
 }
