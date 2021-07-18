@@ -19,8 +19,8 @@ public class VRInput : MonoBehaviour
     public static bool RTrigger { get { return OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger); } }
     public static bool LTrigger { get { return OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger); } }
 
-    public static bool RStickPush { get { return OVRInput.GetDown(OVRInput.RawButton.RThumbstickDown); } }
-    public static bool LStickPush { get { return OVRInput.GetDown(OVRInput.RawButton.LThumbstickDown); } }
+    public static bool RStickPush { get { return OVRInput.GetDown(OVRInput.Button.SecondaryThumbstick); } }
+    public static bool LStickPush { get { return OVRInput.GetDown(OVRInput.Button.PrimaryThumbstick); } }
 
     #endregion
 
@@ -37,16 +37,22 @@ public class VRInput : MonoBehaviour
     #endregion
 
     #region Position
-    static GameObject RHandObj, LHandObj;
+    static GameObject RHandObj, LHandObj, BodyCenter,Camera;
 
     private void Start()
     {
-        RHandObj = GameObject.Find("RightHandAnchor");
-        LHandObj = GameObject.Find("LeftHandAnchor");
+        RHandObj = GameObject.Find("RightControllerAnchor");
+        LHandObj = GameObject.Find("LeftControllerAnchor");
+        BodyCenter = GameObject.Find("Player");
     }
+    
+
     public static Transform LHandPos { get { return LHandObj.transform; } }
 
     public static Transform RHandPos { get { return RHandObj.transform; } }
+
+    public static Transform BodyCenterPos { get { return BodyCenter.transform; } }
+
 
     #endregion
 

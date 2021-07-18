@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5544706911534451356
+--- !u!1 &739831437223484106
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5544706911534451359}
-  - component: {fileID: 5544706911534451345}
-  - component: {fileID: 5544706911534451358}
+  - component: {fileID: 7993976626883371550}
+  - component: {fileID: 5585567578849900142}
+  - component: {fileID: 7110827104982781322}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -18,30 +18,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5544706911534451359
+--- !u!4 &7993976626883371550
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5544706911534451356}
+  m_GameObject: {fileID: 739831437223484106}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.003, y: 0.0608, z: 0}
   m_LocalScale: {x: 0.039327, y: 0.039327, z: 0.039327}
   m_Children: []
-  m_Father: {fileID: 5544706911661681913}
+  m_Father: {fileID: 1887547929623539995}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!198 &5544706911534451345
+--- !u!198 &5585567578849900142
 ParticleSystem:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5544706911534451356}
+  m_GameObject: {fileID: 739831437223484106}
   serializedVersion: 6
   lengthInSec: 5
-  simulationSpeed: 73.02
+  simulationSpeed: 99.72
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -115,7 +115,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 0.76
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -168,7 +168,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 32.94
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -284,7 +284,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.72
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -865,7 +865,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 120.98
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4690,14 +4690,14 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &5544706911534451358
+--- !u!199 &7110827104982781322
 ParticleSystemRenderer:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5544706911534451356}
+  m_GameObject: {fileID: 739831437223484106}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -4754,7 +4754,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!1 &5544706911661681860
+--- !u!1 &2871769669046853811
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4762,10 +4762,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5544706911661681913}
-  - component: {fileID: 5544706911661681862}
-  - component: {fileID: 5544706911661681863}
-  - component: {fileID: 2425401845933018932}
+  - component: {fileID: 6764194987300304116}
+  m_Layer: 0
+  m_Name: c
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6764194987300304116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2871769669046853811}
+  m_LocalRotation: {x: 0.15927882, y: 0.2933552, z: 0.44978952, w: 0.8284095}
+  m_LocalPosition: {x: -0.024, y: 0.02, z: 0.019}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1887547929623539995}
+  m_Father: {fileID: 5544706911661681913}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 39, z: 57}
+--- !u!1 &3966792094527458823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1887547929623539995}
+  - component: {fileID: 3558954797383319957}
+  - component: {fileID: 2361771483328572236}
   m_Layer: 0
   m_Name: BeamSaber
   m_TagString: Untagged
@@ -4773,36 +4803,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5544706911661681913
+--- !u!4 &1887547929623539995
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5544706911661681860}
+  m_GameObject: {fileID: 3966792094527458823}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.108, y: -1.6197784, z: -1.2711217}
-  m_LocalScale: {x: 1.6802, y: 1.6802, z: 1.6802}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5544706911534451359}
-  m_Father: {fileID: 0}
+  - {fileID: 7993976626883371550}
+  m_Father: {fileID: 6764194987300304116}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5544706911661681862
+--- !u!33 &3558954797383319957
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5544706911661681860}
+  m_GameObject: {fileID: 3966792094527458823}
   m_Mesh: {fileID: -5597002278806442958, guid: 7182b8b6b00c3644cbd74597092c23f4, type: 3}
---- !u!23 &5544706911661681863
+--- !u!23 &2361771483328572236
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5544706911661681860}
+  m_GameObject: {fileID: 3966792094527458823}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -4838,7 +4868,39 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &2425401845933018932
+--- !u!1 &5544706911661681860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5544706911661681913}
+  - component: {fileID: 8669554656358591923}
+  m_Layer: 0
+  m_Name: BeamSaber
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5544706911661681913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5544706911661681860}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.108, y: -1.627, z: -1.2711217}
+  m_LocalScale: {x: 1.6802, y: 1.6802, z: 1.6802}
+  m_Children:
+  - {fileID: 6764194987300304116}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8669554656358591923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4847,8 +4909,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5544706911661681860}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7068458a8a159fc439d48ca7a72daa19, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e885e55b50a9614682181c9e2f463b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 0
   WeaponName: BeamSaber
   WeaponTexture: 
+  L: {x: 23.697, y: 44.177, z: -8.979}
+  R: {x: -0.168, y: 12.984, z: -12.324}
+  powerSens: 700000
+  w: {x: 0, y: 0, z: 0}
+  w2: {x: 0, y: 0, z: 0}
+  ww: 0
