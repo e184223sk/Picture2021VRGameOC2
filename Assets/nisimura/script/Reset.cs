@@ -15,23 +15,20 @@ public class Reset : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(BreakManagerInlobby.rBreakobj + "/" + BreakManagerInlobby.rTotal);
         if (BreakManagerInlobby.rBreakobj * 1.0f/BreakManagerInlobby.rTotal > 0.8f)
         {
-
-
-                    //Debug.Log(item.gameObject + "に破壊処理いれたまるー");
-                    //item.gameObject.AddComponent<BreakManager>();
-                    time += Time.deltaTime;
-                    if (time > 4)
-                    {
-                        Instantiate(Resources.Load("reset"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-                        time = 0;
-                        Destroy(gameObject);
-                    }
-                
-
-            
-
+            //Debug.Log(item.gameObject + "に破壊処理いれたまるー");
+            //item.gameObject.AddComponent<BreakManager>();
+            time += Time.deltaTime;
+            if (time > 4)
+            {
+                Instantiate(Resources.Load("reset"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                BreakManagerInlobby.rBreakobj = 0;
+                BreakManagerInlobby.rTotal = 0;
+                time = 0;
+                Destroy(gameObject);
+            }
         }
     }
 }
