@@ -1,0 +1,25 @@
+#objフォルダ無視
+obj/
+
+#Buildフォルダ無視
+Build/
+
+#.vsフォルダ無視
+.vs/
+
+#.sln .csprojを無視
+*.sln
+*.csproj
+
+#Libraryフォルダ無視
+Library/
+
+#Tempフォルダ無視
+Temp
+ 
+
+#hp
+Assets/Hp/
+
+#パッケージのバージョン情報を無視
+Packages/manifest.json
