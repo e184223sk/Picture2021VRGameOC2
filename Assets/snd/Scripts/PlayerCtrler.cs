@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.XR;
 public class PlayerCtrler : MonoBehaviour
 {
 
@@ -9,7 +9,7 @@ public class PlayerCtrler : MonoBehaviour
     public float _speed;
 
 
-    [SerializeField, Range(0, 100)]
+    [SerializeField]
     public float _jumpForce;
 
     public Rigidbody _rigidbody;
@@ -19,7 +19,7 @@ public class PlayerCtrler : MonoBehaviour
     //Weapon _weapon1;
     //Weapon _weapon2;
 
-    public AbilitySuper _ability;
+    public Ability _ability;
 
 
     // Start is called before the first frame update
@@ -27,47 +27,36 @@ public class PlayerCtrler : MonoBehaviour
     {
         _status = GetComponent<PlayerStatus>();
         _rigidbody = GetComponent<Rigidbody>();
-        //デフォルトのアビリティはスピードアップ
-        SpeedUPAbi speed = new SpeedUPAbi();
-        _ability= gameObject.AddComponent<SpeedUPAbi>();
-        _ability._player = this;
-        _ability.ChangeAbility(speed);
-
+        _ability = GetComponent<Ability>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_ability);
-
-
-        if(_ability != null)
-        {
-            _ability.UseAbility();
-        }
-        
         PlayerMove();
     }
 
     public void PlayerMove()
     { 
-        Vector3 velocity = new Vector3(OVRInput.Get(OVRInput.RawAxis2D.LThumbstick).x, 0, OVRInput.Get(OVRInput.RawAxis2D.LThumbstick).y);
-        velocity = transform.TransformDirection(velocity);
-        transform.localPosition += velocity*_speed * Time.fixedDeltaTime;
+        Vector3 velocity = new Vector3(VRInput.LStick.x, 0, VRInput.LStick.y);
+        Vector3 rotation = new Vector3(0, InputTracking.GetLocalRotation(XRNode.Head).eulerAngles.y, 0);
 
-        if (VRInput.A)
+        _rigidbody.position += transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed);
+
+        if (!_ability._flyable)
         {
-            _rigidbody.AddForce(Vector3.up * _jumpForce * Time.deltaTime);
+            if (VRInput.A)
+            {
+                _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+            }
+        }
+        else
+        {
+            if(VRInput.APress)
+            {
+                _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+            }
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.GetComponent<AbilitySuper>())
-        {
-
-        }
-    }
-
 
 }
