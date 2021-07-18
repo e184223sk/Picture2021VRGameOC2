@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class WeaponBehavior : MonoBehaviour
 {
+    public enum HandSide { LEFT, RIGHT }
     public string WeaponName;
     public string WeaponTexture;
     public virtual int NowBullet() => -1;

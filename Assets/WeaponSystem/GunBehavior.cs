@@ -6,12 +6,13 @@ using UnityEngine;
 
 public class GunBehavior : WeaponBehavior
 {
-    bool FIRE_PRESS { get => Input.GetKey(KeyCode.Z); }
-    bool FIRE_DOWN { get => Input.GetKeyDown(KeyCode.Z); }
-    bool RELOAD { get => Input.GetKey(KeyCode.X); }
-
+    bool FIRE_PRESS { get => (side == HandSide.LEFT ? VRInput.LTriggerPress : VRInput.RTriggerPress)|| Input.GetKey(KeyCode.Y); }
+    bool FIRE_DOWN { get => (side == HandSide.LEFT ? VRInput.LTrigger : VRInput.RTrigger) || Input.GetKeyDown(KeyCode.Y); }
+    bool RELOAD { get => (side == HandSide.LEFT ? VRInput.Y : VRInput.B) || Input.GetKey(KeyCode.U); }
+   
     AudioSource source;
     public AudioClip fireSe, reloadSe;
+    public HandSide side;
     public GunType gunType;
     [Range(0.03f, 1f)]
     public float FullAutoFireInterval = 0.4f;
