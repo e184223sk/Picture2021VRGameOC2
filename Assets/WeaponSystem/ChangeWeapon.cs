@@ -4,27 +4,57 @@ using UnityEngine;
 
 public class ChangeWeapon
 {
-    public static void SetLeft0(GameObject g) => Weapon[0, 0] = g;
-    public static void SetLeft1(GameObject g) => Weapon[0, 0] = g;
-    public static void SetRight0(GameObject g) => Weapon[0, 0] = g;
-    public static void SetRight1(GameObject g) => Weapon[0, 0] = g;
+    public static void SetLeft0(GameObject g) { Weapon[0, 0] = g; Update(); }
+    public static void SetLeft1(GameObject g)  {  Weapon[0, 1] = g; Update(); }
+    public static void SetRight0(GameObject g)  {  Weapon[1, 0] = g; Update(); }
+    public static void SetRight1(GameObject g)  {  Weapon[1, 1] = g; Update(); }
     public static int LeftNum  { get => L ? 0 : 1; }
     public static int RightNum { get => R ? 0 : 1; }
-    public static void ChangeL() { L = !L; UPDATE(); }
-    public static void ChangeR() { R = !R; UPDATE(); }
+    public static void ChangeL() { L = !L; Update(); }
+    public static void ChangeR() { R = !R; Update(); }
     public static GameObject GetLeft0 => Weapon[0, 0];
     public static GameObject GetLeft1 => Weapon[0, 1];
     public static GameObject GetRight0 => Weapon[1, 0];
     public static GameObject GetRight1 => Weapon[1, 1];
 
-
+    public static GameObject GetRss(string name, MonoBehaviour v)
+    {
+        return Resources.Load(name) as GameObject;
+    }
     static GameObject[,] Weapon = new GameObject[2, 2];
     static bool L, R;
-    static void UPDATE()
+    static void Update()
     {
-        Weapon[0, 0].active =  L;
-        Weapon[0, 1].active = !L;
-        Weapon[1, 0].active =  R;
-        Weapon[1, 1].active = !R;
+        if (Weapon[0, 0] != null)
+        {
+            Weapon[0, 0].transform.parent = VRInput.LHandPos;
+            Weapon[0, 0].transform.localPosition = Vector3.zero;
+            Weapon[0, 0].active = L;
+            Weapon[0, 0].transform.GetComponent<WeaponBehavior>().side = WeaponBehavior.HandSide.LEFT;
+        }
+
+        if (Weapon[0, 1] != null)
+        {
+            Weapon[0, 1].transform.parent = VRInput.LHandPos;
+            Weapon[0, 1].transform.localPosition = Vector3.zero;
+            Weapon[0, 1].active = !L;
+            Weapon[0, 1].transform.GetComponent<WeaponBehavior>().side = WeaponBehavior.HandSide.LEFT;
+        }
+        if (Weapon[1, 0] != null)
+        {
+            Weapon[1, 0].transform.parent = VRInput.RHandPos;
+            Weapon[1, 0].transform.localPosition = Vector3.zero;
+            Weapon[1, 0].active = R;
+            Weapon[1, 0].transform.GetComponent<WeaponBehavior>().side = WeaponBehavior.HandSide.RIGHT;
+        }
+        if (Weapon[1, 1] != null)
+        {
+            Weapon[1, 1].transform.parent = VRInput.RHandPos; 
+            Weapon[1, 1].transform.localPosition = Vector3.zero;  
+            Weapon[1, 1].active = !R; 
+            Weapon[1, 1].transform.GetComponent<WeaponBehavior>().side = WeaponBehavior.HandSide.RIGHT;
+        }
+        
+        
     } 
 }

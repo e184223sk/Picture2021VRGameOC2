@@ -19,11 +19,5 @@ public class AutoGetComp : Editor {
         {
             autoGetCompornennt.DataSet_GameObject();
         }
-
-        // privateなメソッドを実行するボタン
-        if (GUILayout.Button("GetRigidbody"))
-        {
-            autoGetCompornennt.SendMessage("DataSet_Rigidbody", null, SendMessageOptions.DontRequireReceiver);
-        }
     }
 }
