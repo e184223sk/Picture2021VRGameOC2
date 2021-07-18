@@ -51,6 +51,31 @@ public class PlayerCtrler : MonoBehaviour
 
         _rigidbody.AddForce(transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed * Time.deltaTime), ForceMode.Acceleration);
 
+        if (VRInput.RGripPress || VRInput.LGripPress)
+        {
+            
+            _rigidbody.AddForce(Vector3.up * _jumpForce / 100, ForceMode.Acceleration);
+        }
+
+        if (VRInput.RStickPush)
+        {
+            Debug.Log("右手武器切り替え");
+        }
+        if (VRInput.LStickPush)
+        {
+            Debug.Log("左手武器切り替え");
+        }
+
+        if (VRInput.Y)
+        {
+            Debug.Log("左手武器リロード");
+        }
+        if (VRInput.B)
+        {
+            Debug.Log("右手武器リロード");
+        }
+
+
         // _rigidbody.position += ;
         /*
          if (!_ability._flyable)
@@ -67,10 +92,7 @@ public class PlayerCtrler : MonoBehaviour
          }
          else
          {*/
-        if (VRInput.RGrip || VRInput.LGrip)
-        {
-            _rigidbody.AddForce(Vector3.up * _jumpForce / 100, ForceMode.Acceleration);
-        }
+
         // }
 
         /*

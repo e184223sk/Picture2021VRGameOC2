@@ -52,7 +52,7 @@ public class Ability : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UseAbility();
+        //UseAbility();
     }
 
     public void UseAbility()
