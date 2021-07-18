@@ -5,12 +5,19 @@ using UnityEngine.XR;
 public class PlayerCtrler : MonoBehaviour
 {
 
-    [SerializeField, Range(0, 100)]
+    [SerializeField]
     public float _speed;
 
 
     [SerializeField]
     public float _jumpForce;
+
+    public bool _IsGround = true;
+
+    RaycastHit _hit;
+
+    //何m浮いたらジャンプとみなすか
+    public float _GroundThre;
 
     public Rigidbody _rigidbody;
 
@@ -28,6 +35,7 @@ public class PlayerCtrler : MonoBehaviour
         _status = GetComponent<PlayerStatus>();
         _rigidbody = GetComponent<Rigidbody>();
         _ability = GetComponent<Ability>();
+        _GroundThre = 0.3f;
     }
 
     // Update is called once per frame
@@ -37,26 +45,65 @@ public class PlayerCtrler : MonoBehaviour
     }
 
     public void PlayerMove()
-    { 
+    {
         Vector3 velocity = new Vector3(VRInput.LStick.x, 0, VRInput.LStick.y);
         Vector3 rotation = new Vector3(0, InputTracking.GetLocalRotation(XRNode.Head).eulerAngles.y, 0);
 
-        _rigidbody.position += transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed);
+        _rigidbody.AddForce(transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed * Time.deltaTime), ForceMode.Acceleration);
 
-        if (!_ability._flyable)
+        // _rigidbody.position += ;
+        /*
+         if (!_ability._flyable)
+         {
+             if (VRInput.A)
+             {
+                 //ハイパー雑な着地判定
+                 if(Physics.Raycast(transform.position - new Vector3(0,0.8f,0), Vector3.down, _GroundThre))
+                 {
+                     _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+                 }
+
+             }
+         }
+         else
+         {*/
+        if (VRInput.RGrip || VRInput.LGrip)
         {
-            if (VRInput.A)
+            _rigidbody.AddForce(Vector3.up * _jumpForce / 100, ForceMode.Acceleration);
+        }
+        // }
+
+        /*
+         * 緊急姿勢制御
+        if (VRInput.RStickPush && transform.rotation.eulerAngles.magnitude > 15)
+        {
+            transform.position = new Vector3(transform.position.x, 2, transform.position.z);
+            transform.rotation = Quaternion.Euler(Vector3.zero);
+        }*/
+        /*
+        if(武器がセミオートなら)
+        {
+            if(VRInput.RTrigger)
             {
-                _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+                射撃   
+            }
+            if(VRInput.LTrigger)
+            {
+                射撃   
             }
         }
-        else
+        if(武器がフルオートなら)
         {
-            if(VRInput.APress)
+            if(VRInput.RTriggerPress)
             {
-                _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+                射撃   
+            }
+            if(VRInput.LTriggerPress)
+            {
+                射撃   
             }
         }
+        */
     }
 
 }

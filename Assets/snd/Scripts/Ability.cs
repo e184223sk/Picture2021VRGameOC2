@@ -80,6 +80,11 @@ public class Ability : MonoBehaviour
             if (_remainUsableTime < 0)
             {
                 _IsUsing = false;
+
+                //アビリティ無効化
+                if (_SpeedUPEnable) _player._speed /= _SpeedRate;
+                if (_JumpUPEnable) _player._jumpForce /= _JumpRate;
+                if (_FlyEnable) _flyable = false;
             }
         }
         else
@@ -92,10 +97,6 @@ public class Ability : MonoBehaviour
                 _remainCoolTime = _coolTime;
                 _IsUsable = true;
 
-                //アビリティ無効化
-                if (_SpeedUPEnable) _player._speed /= _SpeedRate;
-                if (_JumpUPEnable) _player._jumpForce /= _JumpRate;
-                if (_FlyEnable) _flyable = false;
                 Debug.Log("クールタイム終了！");
             }
         }
