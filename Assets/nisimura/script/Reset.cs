@@ -21,14 +21,19 @@ public class Reset : MonoBehaviour
             //Debug.Log(item.gameObject + "に破壊処理いれたまるー");
             //item.gameObject.AddComponent<BreakManager>();
             time += Time.deltaTime;
-            if (time > 4)
+            if (time > 10)
             {
-                Instantiate(Resources.Load("reset"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-                BreakManagerInlobby.rBreakobj = 0;
-                BreakManagerInlobby.rTotal = 0;
+                reborn();
                 time = 0;
-                Destroy(gameObject);
+                
             }
         }
+    }
+    public void reborn()
+    {
+        Instantiate(Resources.Load("reset"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+        BreakManagerInlobby.rBreakobj = 0;
+        BreakManagerInlobby.rTotal = 0;
+        Destroy(gameObject);
     }
 }
