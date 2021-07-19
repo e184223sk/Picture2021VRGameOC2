@@ -10,6 +10,8 @@ public class UIControl : MonoBehaviour
     public RawImage ability1;
     public RawImage ability2;
     public RawImage ability3;
+    public RawImage MiniMap;
+    public Rect uvRect;
     public Text time;
     public Text Reload;
     public Text Point;
@@ -20,14 +22,17 @@ public class UIControl : MonoBehaviour
     public float sec, Osec, t;
     public WeaponData[] DataBase = new WeaponData[10];
     public AbilityData[] database = new AbilityData[10];
+    public float speed;
+    float x = 0.0f, y = 0.0f;
     void Start()
     {
-        for (int e = 0; e < 30; e++) { }
         RWeapon = GameObject.Find("Canvas/RWeapon").GetComponent<RawImage>();
         LWeapon = GameObject.Find("Canvas/LWeapon").GetComponent<RawImage>();
         ability1 = GameObject.Find("Canvas/Ability/Ability1").GetComponent<RawImage>();
         ability2 = GameObject.Find("Canvas/Ability/Ability2").GetComponent<RawImage>();
         ability3 = GameObject.Find("Canvas/Ability/Ability3").GetComponent<RawImage>();
+        MiniMap = GameObject.Find("Canvas/MiniMap").GetComponent<RawImage>();
+        MiniMap.uvRect = new Rect(0, 0, 0.1f, 0.1f);
         Barrage = GameObject.Find("Canvas/Barrage").GetComponent<Text>();
         time = GameObject.Find("Canvas/time").GetComponent<Text>();
         Point = GameObject.Find("Canvas/Point").GetComponent<Text>();
@@ -35,6 +40,7 @@ public class UIControl : MonoBehaviour
         min = 4;
         sec = 60F;
         Osec = 0;
+        
     }
     void Update()
     {
@@ -99,6 +105,30 @@ public class UIControl : MonoBehaviour
                 ability3.texture = database[t].image;
             }
         }
+
+        if (x < 0) x = 0;
+        if (x > 1) x = 1;
+        if (y < 0) y = 0;
+        if (y > 1) y = 1;
+
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                y += speed;
+            }
+
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                y -= speed;
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                x -= speed;
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                x += speed;
+            }
+            MiniMap.uvRect = new Rect(x, y, 0.1f, 0.1f);
     }
 }
 

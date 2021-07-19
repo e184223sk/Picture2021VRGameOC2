@@ -620,15 +620,19 @@ MonoBehaviour:
   ability1: {fileID: 0}
   ability2: {fileID: 0}
   ability3: {fileID: 0}
+  MiniMap: {fileID: 0}
+  uvRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   time: {fileID: 0}
   Reload: {fileID: 0}
   Point: {fileID: 0}
   Barrage: {fileID: 0}
-  IsGetw: 000000000000000000000000000000000000000000000000000000000000
-  IsGeta: 000000000000000000000000000000000000000000000000000000000000
-  IsRelaod: 0
-  rk: 0
-  lk: 0
+  IsGetw: 0000
+  IsGeta: 000000
   a: 100
   s: 1
   d: 1
@@ -639,6 +643,7 @@ MonoBehaviour:
   Osec: 0
   t: 0
   DataBase: []
+  speed: 0.01
 --- !u!1 &1104449889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,7 +1045,7 @@ GameObject:
   - component: {fileID: 1413969027}
   - component: {fileID: 1413969026}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: MiniMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1078,19 +1083,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: b5bd12e6542719e4e9cc59fe9ae9dbe7, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
-    height: 1
+    width: 0.1
+    height: 0.1
 --- !u!222 &1413969027
 CanvasRenderer:
   m_ObjectHideFlags: 0
