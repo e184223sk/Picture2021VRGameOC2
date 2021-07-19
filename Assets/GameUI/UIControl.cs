@@ -26,7 +26,7 @@ public class UIControl : MonoBehaviour
     public bool IsRelaod;
     public bool rk, lk;
     public int a, s, d, f, min , b ;
-    public float sec, Osec;
+    public float sec, Osec, t;
     public WeaponData[] DataBase;
     public AbilityData[] database;
     void Start()
@@ -61,41 +61,25 @@ public class UIControl : MonoBehaviour
         Osec = sec;
         //ポイント(完了)
         Point.text = "POINT ：" + a * s * d * f;
-        //残弾(未完了)
+        //残弾(完了?)
         Reload.text = "";
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A)) { b++; }
+        if (b == 0) { Barrage.text = "残弾：6/6"; }
+        if (b == 1) { Barrage.text = "残弾：5/6"; }
+        if (b == 2) { Barrage.text = "残弾：4/6"; }
+        if (b == 3) { Barrage.text = "残弾：3/6"; }
+        if (b == 4) { Barrage.text = "残弾：2/6"; }
+        if (b == 5) { Barrage.text = "残弾：1/6"; }
+        if (b == 6)
         {
-            b++;
-            if (b == 0) { Barrage.text = "残弾：6/6"; }
-            if (b == 1) { Barrage.text = "残弾：5/6"; }
-            if (b == 2) { Barrage.text = "残弾：4/6"; }
-            if (b == 3) { Barrage.text = "残弾：6/6"; }
-            if (b == 4) { Barrage.text = "残弾：6/6"; }
-            if (b == 5) { Barrage.text = "残弾：1/6"; }
-            if (b == 6)
+            t += Time.deltaTime;
+            Barrage.text = "残弾：0/6";
+            Reload.text = "リロード中…";
+            if (t >= 3)
             {
-                for (float t = 0; t < 3; t += Time.deltaTime)
-                {
-                    Barrage.text = "残弾：0/6";
-                    Reload.text = "リロード中…";
-                    if (t > 3)
-                    {
-                        b -= 6;
-                    }
-                }
-
+                b -= 6;
+                t = 0;
             }
-            /*リロード
-                        
-                        {
-                            
-                            else
-                            {
-                                Reload.text = "";
-                            }
-                        }
-                        */
-            
         }
 
         for (int t = 0; t < 30; t++)
