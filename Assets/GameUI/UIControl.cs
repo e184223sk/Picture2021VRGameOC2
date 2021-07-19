@@ -10,25 +10,16 @@ public class UIControl : MonoBehaviour
     public RawImage ability1;
     public RawImage ability2;
     public RawImage ability3;
-    Image[] Weapon = new Image[10];
-    Image[] ability = new Image[10];
-    /*    for(int e = 0;e f< 30;e++)
-        {
-            Weapon[e] = GameObject.Find("Canvas/Weapon" + e).GetComponent<Image>();
-            ability[e] = GameObject.Find("Canvas/ability" + e).GetComponent<Image>();
-        }*/
     public Text time;
     public Text Reload;
     public Text Point;
     public Text Barrage;
-    public bool[] IsGetw = new bool[10];
-    public bool[] IsGeta = new bool[10];
-    public bool IsRelaod;
-    public bool rk, lk;
+    public bool[] IsGetw = new bool[2];
+    public bool[] IsGeta = new bool[3];
     public int a, s, d, f, min , b ;
     public float sec, Osec, t;
-    public WeaponData[] DataBase;
-    public AbilityData[] database;
+    public WeaponData[] DataBase = new WeaponData[10];
+    public AbilityData[] database = new AbilityData[10];
     void Start()
     {
         for (int e = 0; e < 30; e++) { }
@@ -61,9 +52,12 @@ public class UIControl : MonoBehaviour
         Osec = sec;
         //ポイント(完了)
         Point.text = "POINT ：" + a * s * d * f;
-        //残弾(完了?)
+        //残弾(完了)
+        if (b >= 0 && b < 6)
+        {
+            if (Input.GetKeyDown(KeyCode.A)) { b++; }
+        }
         Reload.text = "";
-        if (Input.GetKeyDown(KeyCode.A)) { b++; }
         if (b == 0) { Barrage.text = "残弾：6/6"; }
         if (b == 1) { Barrage.text = "残弾：5/6"; }
         if (b == 2) { Barrage.text = "残弾：4/6"; }
@@ -81,34 +75,28 @@ public class UIControl : MonoBehaviour
                 t = 0;
             }
         }
-
-        for (int t = 0; t < 30; t++)
+        //画像(未完了)
+        for (int t = 0; t < 10; t++)
         {
-            if (rk == true && IsGetw[t] == true)
+            if (IsGetw[0] == true)
             {
                 RWeapon.texture = DataBase[t].image;
             }
-            else if (lk == true && IsGetw[t] == true)
+            if (IsGetw[1] == true)
             {
                 LWeapon.texture = DataBase[t].image;
             }
-            else
+            if (IsGeta[0] == true)
             {
-                RWeapon.texture = null;
-                LWeapon.texture = null;
+                ability1.texture = database[t].image;
             }
-            if (IsGeta[t] == true)
+            if (IsGeta[1] == true)
             {
-                if (ability[t]) { ability1.texture = database[t].image; }
-                if (ability[t]) { ability2.texture = database[t].image; }
-                if (ability[t]) { ability3.texture = database[t].image; }
-
-                else
-                {
-                    ability1.texture = null;
-                    ability2.texture = null;
-                    ability3.texture = null;
-                }
+                ability2.texture = database[t].image;
+            }
+            if (IsGeta[2] == true)
+            {
+                ability3.texture = database[t].image;
             }
         }
     }
