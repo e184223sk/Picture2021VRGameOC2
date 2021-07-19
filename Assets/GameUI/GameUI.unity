@@ -617,21 +617,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RWeapon: {fileID: 0}
   LWeapon: {fileID: 0}
-  ability1: {fileID: 14437952}
-  ability2: {fileID: 1899174285}
-  ability3: {fileID: 1691634496}
+  ability1: {fileID: 0}
+  ability2: {fileID: 0}
+  ability3: {fileID: 0}
+  time: {fileID: 0}
+  Reload: {fileID: 0}
+  Point: {fileID: 0}
   Barrage: {fileID: 0}
   IsGetw: 000000000000000000000000000000000000000000000000000000000000
   IsGeta: 000000000000000000000000000000000000000000000000000000000000
-  IsReload: 0
   rk: 0
   lk: 0
-  IsBarrage: 
   a: 100
   s: 3
   d: 500
   f: 5
-  TimeCount: 0
+  min: 0
+  sec: 0
+  Osec: 0
   DataBase: []
 --- !u!1 &1104449889
 GameObject:

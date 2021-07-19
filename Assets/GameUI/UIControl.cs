@@ -10,8 +10,8 @@ public class UIControl : MonoBehaviour
     public RawImage ability1;
     public RawImage ability2;
     public RawImage ability3;
-    Image[] Weapon = new Image[30];
-    Image[] ability = new Image[30];
+    Image[] Weapon = new Image[10];
+    Image[] ability = new Image[10];
     /*    for(int e = 0;e f< 30;e++)
         {
             Weapon[e] = GameObject.Find("Canvas/Weapon" + e).GetComponent<Image>();
@@ -21,17 +21,18 @@ public class UIControl : MonoBehaviour
     public Text Reload;
     public Text Point;
     public Text Barrage;
-    public bool[] IsGetw = new bool[30];
-    public bool[] IsGeta = new bool[30];
+    public bool[] IsGetw = new bool[10];
+    public bool[] IsGeta = new bool[10];
+    public bool IsRelaod;
     public bool rk, lk;
-    public int a, s, d, f, min;
-    public float TimeCount = 60.0f, sec, Osec;
+    public int a, s, d, f, min , b ;
+    public float sec, Osec;
     public WeaponData[] DataBase;
     public AbilityData[] database;
     void Start()
     {
-        for (int e = 0; e < 30; e++)
-            RWeapon = GameObject.Find("Canvas/RWeapon").GetComponent<RawImage>();
+        for (int e = 0; e < 30; e++) { }
+        RWeapon = GameObject.Find("Canvas/RWeapon").GetComponent<RawImage>();
         LWeapon = GameObject.Find("Canvas/LWeapon").GetComponent<RawImage>();
         ability1 = GameObject.Find("Canvas/Ability/Ability1").GetComponent<RawImage>();
         ability2 = GameObject.Find("Canvas/Ability/Ability2").GetComponent<RawImage>();
@@ -40,90 +41,61 @@ public class UIControl : MonoBehaviour
         time = GameObject.Find("Canvas/time").GetComponent<Text>();
         Point = GameObject.Find("Canvas/Point").GetComponent<Text>();
         Reload = GameObject.Find("Canvas/Reload").GetComponent<Text>();
-        min = 5;
+        min = 4;
         sec = 60F;
-        Osec = 60F;
+        Osec = 0;
     }
     void Update()
     {
-        //時間(未完了)
+        //時間(完了)
         sec -= Time.deltaTime;
         if (sec <= 0F)
         {
             min--;
-            //sec = sec + 60;
+            sec = sec + 60;
         }
         if ((int)sec != (int)Osec)
         {
-            time.text = min.ToString("04") + ":" + ((int)sec).ToString("00");
+            time.text = "TIME ：" + min.ToString("00") + ":" + ((int)sec).ToString("00");
         }
         Osec = sec;
         //ポイント(完了)
         Point.text = "POINT ：" + a * s * d * f;
-        //残弾(完了?)
-        for (int b = 6; b >= 0; b--)
+        //残弾(未完了)
+        Reload.text = "";
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            Reload.text = "";
-            switch (b)
+            b++;
+            if (b == 0) { Barrage.text = "残弾：6/6"; }
+            if (b == 1) { Barrage.text = "残弾：5/6"; }
+            if (b == 2) { Barrage.text = "残弾：4/6"; }
+            if (b == 3) { Barrage.text = "残弾：6/6"; }
+            if (b == 4) { Barrage.text = "残弾：6/6"; }
+            if (b == 5) { Barrage.text = "残弾：1/6"; }
+            if (b == 6)
             {
-                case 1:
-                    if (b == 6)
+                for (float t = 0; t < 3; t += Time.deltaTime)
+                {
+                    Barrage.text = "残弾：0/6";
+                    Reload.text = "リロード中…";
+                    if (t > 3)
                     {
-                        Barrage.text = "残弾：6/6";
+                        b -= 6;
                     }
-                    break;
+                }
 
-                case 2:
-                    if (b == 5)
-                    {
-                        Barrage.text = "残弾：5/6";
-                    }
-                    break;
-                case 3:
-                    if (b == 4)
-                    {
-                        Barrage.text = "残弾：4/6";
-                    }
-                    break;
-                case 4:
-                    if (b == 3)
-                    {
-                        Barrage.text = "残弾：6/6";
-                    }
-                    break;
-                case 5:
-                    if (b == 2)
-                    {
-                        Barrage.text = "残弾：6/6";
-                    }
-                    break;
-                case 6:
-                    if (b == 1)
-                    {
-                        Barrage.text = "残弾：1/6";
-                    }
-                    break;
-                case 7:
-                    if (b == 0)
-                    {
-                        Barrage.text = "残弾：0/6";
-                        //リロード
-                        for (float t = 0.0F; t < 3.0F; t += Time.deltaTime)
+            }
+            /*リロード
+                        
                         {
-                            if (t < 3.0F)
-                            {
-
-                                Reload.text = "リロード中…";
-                            }
+                            
                             else
                             {
                                 Reload.text = "";
                             }
                         }
-                        b += 6;
-                    }
-                    break;
-            }
+                        */
+            
         }
 
         for (int t = 0; t < 30; t++)
