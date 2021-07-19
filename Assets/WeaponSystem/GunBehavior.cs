@@ -15,7 +15,7 @@ public class GunBehavior : WeaponBehavior
    
     AudioSource source;
     public AudioClip fireSe, reloadSe;
-    public HandSide side;
+    
     public GunType gunType;
     [Range(0.03f, 1f)]
     public float FullAutoFireInterval = 0.4f;
