@@ -16,12 +16,12 @@ public class UIControl : MonoBehaviour
     public Text Reload;
     public Text Point;
     public Text Barrage;
-    public bool[] IsGetw = new bool[2];
-    public bool[] IsGeta = new bool[3];
+    public bool[] IsGetW = new bool[10];
+    public bool[] IsGetA = new bool[10];
+    public bool RW, LW, A1, A2, A3;
     public int a, s, d, f, min , b ;
     public float sec, Osec, t;
-    public WeaponData[] DataBase = new WeaponData[10];
-    public AbilityData[] database = new AbilityData[10];
+    public Data[] DataBase;
     public float speed;
     float x = 0.0f, y = 0.0f;
     void Start()
@@ -40,11 +40,84 @@ public class UIControl : MonoBehaviour
         min = 4;
         sec = 60F;
         Osec = 0;
-        
+        for (int t = 0; t < 10; t++)
+        {
+            if (IsGetW[t] == false)
+            {
+                RWeapon.texture = null;
+                LWeapon.texture = null;
+            }
+            if (IsGetA[t] == false)
+            {
+                ability1.texture = null;
+                ability2.texture = null;
+                ability3.texture = null;
+            }
+        }
+        Reload.text = "";
     }
     void Update()
     {
-        //時間(完了)
+        //画像(未完了)
+        for (int m = 0; m < 10; m++)
+        {
+            if (IsGetW[m] == true)
+            {
+                if (Input.GetKeyDown(KeyCode.X))
+                {
+                    RW = true;
+                    if (RW == true)
+                    {
+                        RWeapon.texture = DataBase[m].Wimage;
+                    }
+                }
+            }
+            if (IsGetW[m] == true)
+            {
+                if (Input.GetKeyDown(KeyCode.Z))
+                {
+                    LW = true;
+                    if (LW == true)
+                    {
+                        LWeapon.texture = DataBase[m].Wimage;
+                    }
+                }
+            }
+            if (IsGetA[m] == true)
+            {
+                if (Input.GetKeyDown(KeyCode.C))
+                {
+                    A1 = true;
+                    if (A1 == true)
+                    {
+                        ability1.texture = DataBase[m].Aimage;
+                    }
+                }
+            }
+            if (IsGetA[m] == true)
+            {
+                if (Input.GetKeyDown(KeyCode.V))
+                {
+                    A2 = true;
+                    if (A2 == true)
+                    {
+                        ability2.texture = DataBase[m].Aimage;
+                    }
+                }
+            }
+            if (IsGetA[m] == true)
+            {
+                if (Input.GetKeyDown(KeyCode.B))
+                {
+                    A3 = true;
+                    if (A3 == true)
+                    {
+                        ability3.texture = DataBase[m].Aimage;
+                    }
+                }
+            }
+        }
+        //時間
         sec -= Time.deltaTime;
         if (sec <= 0F)
         {
@@ -53,59 +126,44 @@ public class UIControl : MonoBehaviour
         }
         if ((int)sec != (int)Osec)
         {
-            time.text = "TIME ：" + min.ToString("00") + ":" + ((int)sec).ToString("00");
+            time.text = "TIME ：　" + min.ToString("00") + ":" + ((int)sec).ToString("00");
         }
         Osec = sec;
-        //ポイント(完了)
-        Point.text = "POINT ：" + a * s * d * f;
-        //残弾(完了)
-        if (b >= 0 && b < 6)
+        //ポイント
+        Point.text = "POINT ：　" + a * s * d * f;
+        //残弾
+        if (b <= 6 && b > 0)
         {
-            if (Input.GetKeyDown(KeyCode.A)) { b++; }
+            if (Input.GetKeyDown(KeyCode.A)) { b--; }
         }
-        Reload.text = "";
-        if (b == 0) { Barrage.text = "残弾：6/6"; }
-        if (b == 1) { Barrage.text = "残弾：5/6"; }
-        if (b == 2) { Barrage.text = "残弾：4/6"; }
-        if (b == 3) { Barrage.text = "残弾：3/6"; }
-        if (b == 4) { Barrage.text = "残弾：2/6"; }
-        if (b == 5) { Barrage.text = "残弾：1/6"; }
-        if (b == 6)
+        switch(b)
         {
-            t += Time.deltaTime;
-            Barrage.text = "残弾：0/6";
-            Reload.text = "リロード中…";
-            if (t >= 3)
-            {
-                b -= 6;
-                t = 0;
-            }
+            case 0:
+                t += Time.deltaTime;
+                Barrage.text = "残弾： 0/6";
+                Reload.text = "リロード中…";
+                if (t >= 3)
+                {
+                    b += 6;
+                    t = 0;
+                }
+                break;
+            case 1:Barrage.text = "残弾： 1/6";
+                break;
+            case 2:Barrage.text = "残弾： 2/6";
+                break;
+            case 3:Barrage.text = "残弾： 3/6";
+                break;
+            case 4:Barrage.text = "残弾： 4/6";
+                break;
+            case 5:Barrage.text = "残弾： 5/6";
+                break;
+            case 6:
+                Barrage.text = "残弾： 6/6";
+                Reload.text = "";
+                break;
         }
-        //画像(未完了)
-        for (int t = 0; t < 10; t++)
-        {
-            if (IsGetw[0] == true)
-            {
-                RWeapon.texture = DataBase[t].image;
-            }
-            if (IsGetw[1] == true)
-            {
-                LWeapon.texture = DataBase[t].image;
-            }
-            if (IsGeta[0] == true)
-            {
-                ability1.texture = database[t].image;
-            }
-            if (IsGeta[1] == true)
-            {
-                ability2.texture = database[t].image;
-            }
-            if (IsGeta[2] == true)
-            {
-                ability3.texture = database[t].image;
-            }
-        }
-
+        //ミニマップ
         if (x < 0) x = 0;
         if (x > 1) x = 1;
         if (y < 0) y = 0;
@@ -133,11 +191,8 @@ public class UIControl : MonoBehaviour
 }
 
 [System.Serializable]
-public class WeaponData
+public class Data
 {
-    public Texture2D image;
-}
-public class AbilityData
-{
-    public Texture2D image;
+    public Texture2D Wimage;
+    public Texture2D Aimage;
 }
