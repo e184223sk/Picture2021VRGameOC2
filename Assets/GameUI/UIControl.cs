@@ -126,39 +126,41 @@ public class UIControl : MonoBehaviour
         }
         if ((int)sec != (int)Osec)
         {
-            time.text = "TIME ：" + min.ToString("00") + ":" + ((int)sec).ToString("00");
+            time.text = "TIME ：　" + min.ToString("00") + ":" + ((int)sec).ToString("00");
         }
         Osec = sec;
         //ポイント
-        Point.text = "POINT ：" + a * s * d * f;
+        Point.text = "POINT ：　" + a * s * d * f;
         //残弾
-        if (b >= 0 && b < 6)
+        if (b <= 6 && b > 0)
         {
-            if (Input.GetKeyDown(KeyCode.A)) { b++; }
+            if (Input.GetKeyDown(KeyCode.A)) { b--; }
         }
         switch(b)
         {
-            case 0: Barrage.text = "残弾：6/6";
-                Reload.text = "";
-                break;
-            case 1:Barrage.text = "残弾：5/6";
-                break;
-            case 2:Barrage.text = "残弾：4/6";
-                break;
-            case 3:Barrage.text = "残弾：3/6";
-                break;
-            case 4:Barrage.text = "残弾：2/6";
-                break;
-            case 5:Barrage.text = "残弾：1/6";
-                break;
-            case 6:t += Time.deltaTime;
-                Barrage.text = "残弾：0/6";
+            case 0:
+                t += Time.deltaTime;
+                Barrage.text = "残弾： 0/6";
                 Reload.text = "リロード中…";
                 if (t >= 3)
                 {
-                    b -= 6;
+                    b += 6;
                     t = 0;
                 }
+                break;
+            case 1:Barrage.text = "残弾： 1/6";
+                break;
+            case 2:Barrage.text = "残弾： 2/6";
+                break;
+            case 3:Barrage.text = "残弾： 3/6";
+                break;
+            case 4:Barrage.text = "残弾： 4/6";
+                break;
+            case 5:Barrage.text = "残弾： 5/6";
+                break;
+            case 6:
+                Barrage.text = "残弾： 6/6";
+                Reload.text = "";
                 break;
         }
         //ミニマップ
