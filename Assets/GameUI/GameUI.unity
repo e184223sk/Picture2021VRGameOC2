@@ -631,8 +631,13 @@ MonoBehaviour:
   Reload: {fileID: 0}
   Point: {fileID: 0}
   Barrage: {fileID: 0}
-  IsGetw: 0000
-  IsGeta: 000000
+  IsGetW: 00000000000000000000
+  IsGetA: 00000000000000000000
+  RW: 0
+  LW: 0
+  A1: 0
+  A2: 0
+  A3: 0
   a: 100
   s: 1
   d: 1
@@ -642,8 +647,28 @@ MonoBehaviour:
   sec: 0
   Osec: 0
   t: 0
-  DataBase: []
-  speed: 0.01
+  DataBase:
+  - Wimage: {fileID: 2800000, guid: b5bd12e6542719e4e9cc59fe9ae9dbe7, type: 3}
+    Aimage: {fileID: 2800000, guid: deaffc2f79803ed4a8b598ca7238a517, type: 3}
+  - Wimage: {fileID: 2800000, guid: 5a0bd62be04a89643a2d9499c9c71614, type: 3}
+    Aimage: {fileID: 2800000, guid: bd19204b016d7064b9cae2ffcb500ae3, type: 3}
+  - Wimage: {fileID: 2800000, guid: 41e01988d153b444db62bcd48bbcb3a7, type: 3}
+    Aimage: {fileID: 2800000, guid: f130318f5f26ecf4f8bf61c9d42a70ef, type: 3}
+  - Wimage: {fileID: 2800000, guid: ffb8ead42e2aa5c428b181c113f6e713, type: 3}
+    Aimage: {fileID: 0}
+  - Wimage: {fileID: 0}
+    Aimage: {fileID: 0}
+  - Wimage: {fileID: 0}
+    Aimage: {fileID: 0}
+  - Wimage: {fileID: 0}
+    Aimage: {fileID: 0}
+  - Wimage: {fileID: 0}
+    Aimage: {fileID: 0}
+  - Wimage: {fileID: 0}
+    Aimage: {fileID: 0}
+  - Wimage: {fileID: 0}
+    Aimage: {fileID: 0}
+  speed: 0.001
 --- !u!1 &1104449889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,7 +1114,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: b5bd12e6542719e4e9cc59fe9ae9dbe7, type: 3}
+  m_Texture: {fileID: 2800000, guid: b82f1e6b30cb9364cab0d13998cb39b1, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
