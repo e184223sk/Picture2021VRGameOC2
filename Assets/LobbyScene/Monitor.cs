@@ -5,19 +5,24 @@ using UnityEngine.Video;
 
 public class Monitor : MonoBehaviour
 {
-
+    bool k;
     public VideoPlayer Video;
     // Start is called before the first frame update
     void Start()
     {
-        Video.Stop();
+        Video.Play();
         Video.isLooping = true;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!k)
+        {
+            Video.Pause();
+            k = true;
+        }
     }
 
     //再生
