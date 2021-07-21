@@ -18,7 +18,7 @@ public class UIControl : MonoBehaviour
     public Text Barrage;
     public bool[] IsGetW = new bool[10];
     public bool[] IsGetA = new bool[10];
-    public bool RW, LW, A1, A2, A3;
+    public bool RW, LW, A1, A2, A3, Lobby;
     public int a, s, d, f, min , b ;
     public float sec, Osec, t;
     public Data[] DataBase;
@@ -55,10 +55,11 @@ public class UIControl : MonoBehaviour
             }
         }
         Reload.text = "";
+        Lobby = true;
     }
     void Update()
     {
-        //画像(未完了)
+        //画像
         for (int m = 0; m < 10; m++)
         {
             if (IsGetW[m] == true)
@@ -117,120 +118,140 @@ public class UIControl : MonoBehaviour
                 }
             }
         }
-        //時間
-        sec -= Time.deltaTime;
-        if (sec <= 0F)
+        if(Lobby == false)
         {
-            min--;
-            sec = sec + 60;
+            //時間
+            sec -= Time.deltaTime;
+            if (sec <= 0F)
+            {
+                min--;
+                sec = sec + 60;
+            }
+            if ((int)sec != (int)Osec)
+            {
+                time.text = "TIME ：　" + min.ToString("00") + ":" + ((int)sec).ToString("00");
+            }
+            Osec = sec;
+            //ポイント
+            Point.text = "POINT ：　" + a * s * d * f;
         }
-        if ((int)sec != (int)Osec)
+        else
         {
-            time.text = "TIME ：　" + min.ToString("00") + ":" + ((int)sec).ToString("00");
+            time.text = "";
+            Point.text = "";
         }
-        Osec = sec;
-        //ポイント
-        Point.text = "POINT ：　" + a * s * d * f;
-        //残弾
-        if (b <= 30 && b > 0)
+        if( RWeapon.texture == true || LWeapon.texture == true)
         {
-            if (Input.GetKeyDown(KeyCode.A)) { b--; }
+            //残弾
+            if (b <= 30 && b > 0)
+            {
+                if (Input.GetKeyDown(KeyCode.A)) { b--; }
+            }
+            switch (b)
+            {
+                case 0:
+                    t += Time.deltaTime;
+                    Barrage.text = "残弾： 0/30";
+                    Reload.text = "リロード中…";
+                    if (t >= 3)
+                    {
+                        b += 30;
+                        t = 0;
+                    }
+                    break;
+                case 1:
+                    Barrage.text = "残弾： 1/30";
+                    break;
+                case 2:
+                    Barrage.text = "残弾： 2/30";
+                    break;
+                case 3:
+                    Barrage.text = "残弾： 3/30";
+                    break;
+                case 4:
+                    Barrage.text = "残弾： 4/30";
+                    break;
+                case 5:
+                    Barrage.text = "残弾： 5/30";
+                    break;
+                case 6:
+                    Barrage.text = "残弾： 6/30";
+                    break;
+                case 7:
+                    Barrage.text = "残弾： 7/30";
+                    break;
+                case 8:
+                    Barrage.text = "残弾： 8/30";
+                    break;
+                case 9:
+                    Barrage.text = "残弾： 9/30";
+                    break;
+                case 10:
+                    Barrage.text = "残弾： 10/30";
+                    break;
+                case 11:
+                    Barrage.text = "残弾： 11/30";
+                    break;
+                case 12:
+                    Barrage.text = "残弾： 12/30";
+                    break;
+                case 13:
+                    Barrage.text = "残弾： 13/30";
+                    break;
+                case 14:
+                    Barrage.text = "残弾： 14/30";
+                    break;
+                case 15:
+                    Barrage.text = "残弾： 15/30";
+                    break;
+                case 16:
+                    Barrage.text = "残弾： 16/30";
+                    break;
+                case 17:
+                    Barrage.text = "残弾： 17/30";
+                    break;
+                case 18:
+                    Barrage.text = "残弾： 18/30";
+                    break;
+                case 19:
+                    Barrage.text = "残弾： 19/30";
+                    break;
+                case 20:
+                    Barrage.text = "残弾： 20/30";
+                    break;
+                case 21:
+                    Barrage.text = "残弾： 21/30";
+                    break;
+                case 22:
+                    Barrage.text = "残弾： 22/30";
+                    break;
+                case 23:
+                    Barrage.text = "残弾： 23/30";
+                    break;
+                case 24:
+                    Barrage.text = "残弾： 24/30";
+                    break;
+                case 25:
+                    Barrage.text = "残弾： 25/30";
+                    break;
+                case 26:
+                    Barrage.text = "残弾： 26/30";
+                    break;
+                case 28:
+                    Barrage.text = "残弾： 28/30";
+                    break;
+                case 29:
+                    Barrage.text = "残弾： 29/30";
+                    break;
+                case 30:
+                    Barrage.text = "残弾： 30/30";
+                    Reload.text = "";
+                    break;
+            }
         }
-        switch(b)
+        else
         {
-            case 0:
-                t += Time.deltaTime;
-                Barrage.text = "残弾： 0/30";
-                Reload.text = "リロード中…";
-                if (t >= 3)
-                {
-                    b += 30;
-                    t = 0;
-                }
-                break;
-            case 1:Barrage.text = "残弾： 1/30";
-                break;
-            case 2:Barrage.text = "残弾： 2/30";
-                break;
-            case 3:Barrage.text = "残弾： 3/30";
-                break;
-            case 4:Barrage.text = "残弾： 4/30";
-                break;
-            case 5:Barrage.text = "残弾： 5/30";
-                break;
-            case 6:
-                Barrage.text = "残弾： 6/30";
-                break;
-            case 7:
-                Barrage.text = "残弾： 7/30";
-                break;
-            case 8:
-                Barrage.text = "残弾： 8/30";
-                break;
-            case 9:
-                Barrage.text = "残弾： 9/30";
-                break;
-            case 10:
-                Barrage.text = "残弾： 10/30";
-                break;
-            case 11:
-                Barrage.text = "残弾： 11/30";
-                break;
-            case 12:
-                Barrage.text = "残弾： 12/30";
-                break;
-            case 13:
-                Barrage.text = "残弾： 13/30";
-                break;
-            case 14:
-                Barrage.text = "残弾： 14/30";
-                break;
-            case 15:
-                Barrage.text = "残弾： 15/30";
-                break;
-            case 16:
-                Barrage.text = "残弾： 16/30";
-                break;
-            case 17:
-                Barrage.text = "残弾： 17/30";
-                break;
-            case 18:
-                Barrage.text = "残弾： 18/30";
-                break;
-            case 19:
-                Barrage.text = "残弾： 19/30";
-                break;
-            case 20:
-                Barrage.text = "残弾： 20/30";
-                break;
-            case 21:
-                Barrage.text = "残弾： 21/30";
-                break;
-            case 22:
-                Barrage.text = "残弾： 22/30";
-                break;
-            case 23:
-                Barrage.text = "残弾： 23/30";
-                break;
-            case 24:
-                Barrage.text = "残弾： 24/30";
-                break;
-            case 25:
-                Barrage.text = "残弾： 25/30";
-                break;
-            case 26:
-                Barrage.text = "残弾： 26/30";
-                break;
-            case 28:
-                Barrage.text = "残弾： 28/30";
-                break;
-            case 29:
-                Barrage.text = "残弾： 29/30";
-                break;
-            case 30:
-                Barrage.text = "残弾： 30/30";
-                Reload.text = "";
-                break;
+            Barrage.text = "";
         }
         //ミニマップ
         if (x < 0) x = 0;
