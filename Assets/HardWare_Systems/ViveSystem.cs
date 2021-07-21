@@ -2,59 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ViveSystem : SerialSystems
+/// <summary>
+/// 振動デバイス「Vive Boy」制御用のクラス
+/// </summary>
+public  class ViveSystem : SerialSystems
 {
 
-    /// <summary>
-    /// 未記入
-    /// </summary>
-   
-    public float[] Power = new float[10];
-    const string C32 = "0123456789ABCDEFGHIJKLMNOPQRSTUV";
-    int f;
+    /// <summary> 頭部の振動の強さ </summary>
+    public static float Head       { get => Power[0]; set => Power[0] = set(value); }
 
-    void Start()
-    {
-        f = -1;
-    }
+    /// <summary> 胴部の振動の強さ </summary>
+    public static float Body       { get => Power[1]; set => Power[1] = set(value); }
 
-    void Set(int v)
-    {
-        if (0 < v && v < 9)
-            WriteLine("abcdefg"[v] + C32.Substring((int)(Power[0] * 31), 1));
-      
-    }
+    /// <summary> 左肘の振動の強さ </summary>
+    public static float LeftElbow  { get => Power[2]; set => Power[2] = set(value); }
+
+    /// <summary> 右肘の振動の強さ </summary>
+    public static float RightElbow { get => Power[3]; set => Power[3] = set(value); }
+
+    /// <summary> 左手首の振動の強さ </summary>
+    public static float LeftWrist  { get => Power[4]; set => Power[4] = set(value); }
+
+    /// <summary> 右手首の振動の強さ </summary>
+    public static float RightWrist { get => Power[5]; set => Power[5] = set(value); }
+
+    /// <summary> 左ひざの振動の強さ </summary>
+    public static float LeftKnee   { get => Power[6]; set => Power[6] = set(value); }
+
+    /// <summary> 右ひざの振動の強さ </summary>
+    public static float RightKnee  { get => Power[7]; set => Power[7] = set(value); }
+
+    /// <summary> 左足首の振動の強さ </summary>
+    public static float LeftAnkle  { get => Power[8]; set => Power[8] = set(value); }
+
+    /// <summary> 右足首の振動の強さ </summary>
+    public static float RightAnkle { get => Power[9]; set => Power[9] = set(value); }
 
 
-    public void Update_()
+    static float set(float raw) => raw > 1 ? 1 : (raw < 0 ? 0 : raw);
+    static float[] Power = new float[10]; 
+ 
+    public void Update()
     {
         if (!IsSetting) return;
-
-        //データの上限下限の補正--------------------------------------------
+ 
         for (int y = 0; y < 10; y++)
-            Power[y] = Power[y] > 1 ? 1 : (Power[y] < 0 ? 0 : Power[y]);
-
-        //4フレームに分散して送信------------------------------------------
-        f++;
-        if (++f == 5) f = 0;
-        Set(f);
-        Set(f);
-        Set(f);
-        //0123456789
-        //05
-        //16
-        //27
-        //38
-        //49
-
-        switch (f)
         {
-            case 0: Set(1); break;
-            case 1: Set(2); Set(3); break;
-            case 2: Set(4); Set(5); break;
-            case 3: Set(6); break;
+            WriteLine("abcdefg"[y] + "0123456789ABCDEFGHIJKLMNOPQRSTUV".Substring((int)(Power[y] * 31), 1));
+            for (int x = 0; x < 100; x++) ; //データ処理待ちの為の保険
         }
-
     }
 }
  
