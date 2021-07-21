@@ -632,13 +632,13 @@ MonoBehaviour:
   Point: {fileID: 0}
   Barrage: {fileID: 0}
   IsGetW: 01000000000000000000
-  IsGetA: 00000000000000000000
+  IsGetA: 01000000000000000000
   RW: 0
   LW: 0
   A1: 0
   A2: 0
   A3: 0
-  Lobby: 0
+  Lobby: 1
   a: 100
   s: 1
   d: 1

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIControl : MonoBehaviour
 {
@@ -148,20 +149,29 @@ public class UIControl : MonoBehaviour
         }
         if(Lobby == false)
         {
-            //時間
-            sec -= Time.deltaTime;
-            if (sec <= 0F)
+
+            if (min >= 0F && sec >= 0F)
             {
-                min--;
-                sec = sec + 60;
+
+                //時間
+                sec -= Time.deltaTime;
+                if (sec <= 0F)
+                {
+                    min--;
+                    sec = sec + 60;
+                }
+                if ((int)sec != (int)Osec)
+                {
+                    time.text = "TIME ：　" + min.ToString("00") + ":" + ((int)sec).ToString("00");
+                }
+                Osec = sec;
+                //ポイント
+                Point.text = "POINT ：　" + a * s * d * f;
             }
-            if ((int)sec != (int)Osec)
+            else
             {
-                time.text = "TIME ：　" + min.ToString("00") + ":" + ((int)sec).ToString("00");
+                SceneManager.LoadScene("lobby");
             }
-            Osec = sec;
-            //ポイント
-            Point.text = "POINT ：　" + a * s * d * f;
         }
         else
         {
