@@ -631,22 +631,25 @@ MonoBehaviour:
   Reload: {fileID: 0}
   Point: {fileID: 0}
   Barrage: {fileID: 0}
-  IsGetW: 00000000000000000000
-  IsGetA: 00000000000000000000
+  IsGetW: 01000000000000000000
+  IsGetA: 01000000000000000000
   RW: 0
   LW: 0
   A1: 0
   A2: 0
   A3: 0
+  Lobby: 1
   a: 100
   s: 1
   d: 1
   f: 1
   min: 0
   b: 30
+  Maxb: 30
   sec: 0
   Osec: 0
   t: 0
+  relotime: 3
   DataBase:
   - Wimage: {fileID: 2800000, guid: b5bd12e6542719e4e9cc59fe9ae9dbe7, type: 3}
     Aimage: {fileID: 2800000, guid: deaffc2f79803ed4a8b598ca7238a517, type: 3}

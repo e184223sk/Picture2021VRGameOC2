@@ -15,7 +15,7 @@ public class SerialSystems : MonoBehaviour
 
     SerialPort port;
 
-    protected string init()
+    public string init()
     {
         try
         {
