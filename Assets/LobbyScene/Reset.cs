@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Reset : MonoBehaviour
-{ 
+{
+    public static Reset me;
     public static float time = 0;
     GameObject[] obj;
     // Start is called before the first frame update
     void Start()
     {
+        me = this;
         obj = FindObjectsOfType(typeof(GameObject)) as GameObject[];
     }
 
@@ -31,7 +33,8 @@ public class Reset : MonoBehaviour
     }
     public void reborn()
     {
-        Instantiate(Resources.Load("reset"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+        Debug.Log("reset layout");
+        me = (Instantiate(Resources.Load("reset"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity)as GameObject).GetComponent<Reset>();
         BreakManagerInlobby.rBreakobj = 0;
         BreakManagerInlobby.rTotal = 0;
         Destroy(gameObject);

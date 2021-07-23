@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class GunBehavior : WeaponBehavior
 {
+    public static bool IntervalUp__ENABLE;
+    public static bool ReloadTimeUP__ENABLE; 
+
     bool FIRE_PRESS { get => (side == HandSide.LEFT ? VRInput.LTriggerPress : VRInput.RTriggerPress)|| Input.GetKey(KeyCode.Y); }
     bool FIRE_DOWN { get => (side == HandSide.LEFT ? VRInput.LTrigger : VRInput.RTrigger) || Input.GetKeyDown(KeyCode.Y); }
     bool RELOAD { get => (side == HandSide.LEFT ? VRInput.Y : VRInput.B) || Input.GetKey(KeyCode.U); }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIControl : MonoBehaviour
 {
@@ -10,106 +11,204 @@ public class UIControl : MonoBehaviour
     public RawImage ability1;
     public RawImage ability2;
     public RawImage ability3;
-    Image[] Weapon = new Image[30];
-    Image[] ability = new Image[30];
+    public RawImage MiniMap;
+    public Rect uvRect;
     public Text time;
     public Text Reload;
     public Text Point;
     public Text Barrage;
-    public bool[] IsGetw = new bool[30];
-    public bool[] IsGeta = new bool[30];
-    public bool IsReload;
-    public bool rk, lk;
-    public int[] IsBarrage;
-    public int a = 100, s = 3, d = 500, f = 5;
-    int min;
-    float sec, Osec;
-    public WeaponData[] DataBase;
-    public AbilityData[] database;
+    public bool[] IsGetW = new bool[10];
+    public bool[] IsGetA = new bool[10];
+    public bool RW, LW, A1, A2, A3, Lobby;
+    public int a, s, d, f, min , b ,Maxb;
+    public float sec, Osec, t,relotime;
+    public Data[] DataBase;
+    public float speed;
+    float x = 0.0f, y = 0.0f;
     void Start()
     {
-        /*for(int e = 0;e < 30;e++)
-        {
-            Weapon[e] = GameObject.Find("Canvas/Weapon" + e).GetComponent<Image>();
-            ability[e] = GameObject.Find("Canvas/ability" + e).GetComponent<Image>();
-        }*/
-        Barrage = GameObject.Find("Canvas/Barrage").GetComponent<Text>();
         RWeapon = GameObject.Find("Canvas/RWeapon").GetComponent<RawImage>();
         LWeapon = GameObject.Find("Canvas/LWeapon").GetComponent<RawImage>();
-        ability1 = GameObject.Find("Canvas/AbilityColumn/Ability1").GetComponent<RawImage>();
-        ability2 = GameObject.Find("Canvas/AbilityColumn/Ability2").GetComponent<RawImage>();
-        ability3 = GameObject.Find("Canvas/AbilityColumn/Ability3").GetComponent<RawImage>();
-        time = GameObject.Find("Canvas/Time").GetComponent<Text>();
+        ability1 = GameObject.Find("Canvas/Ability/Ability1").GetComponent<RawImage>();
+        ability2 = GameObject.Find("Canvas/Ability/Ability2").GetComponent<RawImage>();
+        ability3 = GameObject.Find("Canvas/Ability/Ability3").GetComponent<RawImage>();
+        MiniMap = GameObject.Find("Canvas/MiniMap").GetComponent<RawImage>();
+        MiniMap.uvRect = new Rect(0, 0, 0.1f, 0.1f);
+        Barrage = GameObject.Find("Canvas/Barrage").GetComponent<Text>();
+        time = GameObject.Find("Canvas/time").GetComponent<Text>();
         Point = GameObject.Find("Canvas/Point").GetComponent<Text>();
         Reload = GameObject.Find("Canvas/Reload").GetComponent<Text>();
-        min = 0;
-        sec = 0f;
+        min = 4;
+        sec = 60F;
         Osec = 0;
+        for (int t = 0; t < 10; t++)
+        {
+            if (IsGetW[t] == false)
+            {
+                RWeapon.texture = null;
+                LWeapon.texture = null;
+            }
+            if (IsGetA[t] == false)
+            {
+                ability1.texture = null;
+                ability2.texture = null;
+                ability3.texture = null;
+            }
+        }
+        Reload.text = "";
+        b = Maxb;
+        Lobby = true;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        //時間(未完了)
-        sec += Time.deltaTime;
-        if (sec >= 60f)
+        if (RWeapon.texture == true || LWeapon.texture == true)
         {
-            min++;
-            sec = sec - 60;
-        }
-        if ((int)sec != (int)Osec)
-        {
-            time.text = "TIME ：" + min.ToString("00") + ":" + ((int)sec).ToString("00");
-        }
-        //ポイント(未完了)
-        Point.text = "POINT ：" + a * s * d * f;
-        //リロード(完了)
-        if (IsReload == true)
-        {
-            Reload.text = "リロード中…";
-        }
-        else
-        {
-            Reload.text = "";
-        }
-        //残弾(未完了)
-        for(int q = 6;q >= 0;q--)
-        {
-            if (q == 6)
+            //残弾
+            if (b <= Maxb && b > 0)
             {
-                
+                if (Input.GetKeyDown(KeyCode.A)) { b--; }
             }
-        }
-
-        for (int t = 0; t < 30; t++)
-        {
-            if (rk == true && IsGetw[t] == true)
+            Barrage.text = "残弾： " + b + "/" + Maxb;
+            if (b == 0)
             {
-                RWeapon.texture = DataBase[t].image;
-            }
-            else if (lk == true && IsGetw[t] == true)
-            {
-                LWeapon.texture = DataBase[t].image;
+                t += Time.deltaTime;
+                Reload.text = "リロード中…";
+                if (t >= relotime)
+                {
+                    b = Maxb;
+                    t = 0;
+                }
             }
             else
             {
-                RWeapon = null;
-                LWeapon = null;
+                Reload.text = "";
             }
-            if (IsGeta[t] == true) { ability1.texture = database[t].image; }
-            if (IsGeta[t] == true) { ability2.texture = database[t].image; }
-            if (IsGeta[t] == true) { ability3.texture = database[t].image; }
+        }
+        else
+        {
+            Barrage.text = "";
+        }
+        //画像
+        for (int m = 0; m < 10; m++)
+        {
+            if (IsGetW[m] == true)
+            {
+                if (Input.GetKeyDown(KeyCode.X))
+                {
+                    RW = true;
+                    if (RW == true)
+                    {
+                        RWeapon.texture = DataBase[m].Wimage;
+                    }
+                }
+            }
+            if (IsGetW[m] == true)
+            {
+                if (Input.GetKeyDown(KeyCode.Z))
+                {
+                    LW = true;
+                    if (LW == true)
+                    {
+                        LWeapon.texture = DataBase[m].Wimage;
+                    }
+                }
+            }
+            if (IsGetA[m] == true)
+            {
+                if (Input.GetKeyDown(KeyCode.C))
+                {
+                    A1 = true;
+                    if (A1 == true)
+                    {
+                        ability1.texture = DataBase[m].Aimage;
+                    }
+                }
+            }
+            if (IsGetA[m] == true)
+            {
+                if (Input.GetKeyDown(KeyCode.V))
+                {
+                    A2 = true;
+                    if (A2 == true)
+                    {
+                        ability2.texture = DataBase[m].Aimage;
+                    }
+                }
+            }
+            if (IsGetA[m] == true)
+            {
+                if (Input.GetKeyDown(KeyCode.B))
+                {
+                    A3 = true;
+                    if (A3 == true)
+                    {
+                        ability3.texture = DataBase[m].Aimage;
+                    }
+                }
+            }
+        }
+        if(Lobby == false)
+        {
+
+            if (min >= 0F && sec >= 0F)
+            {
+
+                //時間
+                sec -= Time.deltaTime;
+                if (sec <= 0F)
+                {
+                    min--;
+                    sec = sec + 60;
+                }
+                if ((int)sec != (int)Osec)
+                {
+                    time.text = "TIME ：　" + min.ToString("00") + ":" + ((int)sec).ToString("00");
+                }
+                Osec = sec;
+                //ポイント
+                Point.text = "POINT ：　" + a * s * d * f;
+            }
+            else
+            {
+                SceneManager.LoadScene("lobby");
+            }
+        }
+        else
+        {
+            time.text = "";
+            Point.text = "";
         }
         
+        //ミニマップ
+        if (x < 0) x = 0;
+        if (x > 1) x = 1;
+        if (y < 0) y = 0;
+        if (y > 1) y = 1;
+
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                y += speed;
+            }
+
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                y -= speed;
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                x -= speed;
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                x += speed;
+            }
+            MiniMap.uvRect = new Rect(x, y, 0.1f, 0.1f);
     }
 }
 
 [System.Serializable]
-public class WeaponData
+public class Data
 {
-    public Texture2D image;
-}
-public class AbilityData
-{
-    public Texture2D image;
+    public Texture2D Wimage;
+    public Texture2D Aimage;
 }
