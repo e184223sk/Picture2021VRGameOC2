@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SerialSystems : MonoBehaviour
 {
-    public bool IsSetting => port.IsOpen;
+    public bool IsSetting => port != null && port.IsOpen;
     [SerializeField, Range(1,100)]
     public int COM;
 

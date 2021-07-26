@@ -16,6 +16,9 @@ public class HardWareSettings : MonoBehaviour
     {
         HWS = GameObject.Find("[HardWare - System]");
         phase = 0;
+
+        VBCOM.transform.gameObject.active = true;
+        phase = 2;
     }
 
     // Update is called once per frame
@@ -26,11 +29,11 @@ public class HardWareSettings : MonoBehaviour
             case 0:
                 if (VBCOM.IsGO)
                 {
-                    VBCOM.transform.gameObject.active = false;
-                    HWS.GetComponent<ViveSystem>().COM = VBCOM.PORTs;
-                   string d = HWS.GetComponent<ViveSystem>().init();
+                    HWS.GetComponent<ViveSystem>().COM = VBCOM.PORTs; 
+                    string d = HWS.GetComponent<ViveSystem>().init();
                     if (d == "")
-                    { 
+                    {
+                        VBCOM.transform.gameObject.active = false;
                         _CONSOLE.Write("LOG:接続しました");
                         phase = 1;
                     }
@@ -38,6 +41,7 @@ public class HardWareSettings : MonoBehaviour
                     {
                         _CONSOLE.Write("ERROR:" + d);
                     }
+                    VBCOM.IsGO = false;
                 }
                 else if (VBCOM.IsSkip)
                 {
@@ -52,11 +56,11 @@ public class HardWareSettings : MonoBehaviour
             case 2:
                 if (WSCOM.IsGO)
                 {
-                    WSCOM.transform.gameObject.active = false;
                     HWS.GetComponent<WindSystem>().COM = WSCOM.PORTs;
                     string d = HWS.GetComponent<WindSystem>().init();
                     if (d == "")
                     {
+                        WSCOM.transform.gameObject.active = false;
                         _CONSOLE.Write("LOG:接続しました");
                         phase = 3;
                     }
@@ -64,6 +68,7 @@ public class HardWareSettings : MonoBehaviour
                     {
                         _CONSOLE.Write("ERROR:" + d);
                     }
+                    WSCOM.IsGO = false;
                 }
                 else if (WSCOM.IsSkip)
                 {
@@ -72,10 +77,7 @@ public class HardWareSettings : MonoBehaviour
                 }
                 break;
             case 3: break;
-            case 4: break;
-            case 5:
-                
-                break;
+            case 4: break; 
 
             default:
                 c += Time.deltaTime;
