@@ -6,16 +6,36 @@ public class GameUISystems : MonoBehaviour
 {
     public static UIControl target;
 
-    // Start is called before the first frame update
     void Start()
     {
         target = GetComponent<UIControl>();
     }
-      
+    
 
-    // Update is called once per frame
     void Update()
     {
         
+        if (target.Lobby)
+        {
+            //アビリティアイコン--------------------------
+            if (Ability._FlyEnable) { }
+            else if (Ability._FlyEnable) { }
+            else if (Ability._FlyEnable) { }
+            else if (Ability._FlyEnable) { }
+            else if (Ability._FlyEnable) { }
+            else { }
+
+            //Map--------------------------------------
+        }
+
+        else
+        {
+            //武器-----------------------------------
+            //武器アイコン
+            //武器弾数
+            //武器リロードバー
+            //Map-------------------------------------
+        }
+
     }
 }
