@@ -17,10 +17,9 @@ public class HardWareSettings : MonoBehaviour
         HWS = GameObject.Find("[HardWare - System]");
         phase = 0;
 
-        VBCOM.transform.gameObject.active = true;
-        phase = 2;
+        VBCOM.transform.gameObject.active = true; 
     }
-
+    bool KK => Input.GetKeyDown(KeyCode.A);
     // Update is called once per frame
     void Update()
     {
