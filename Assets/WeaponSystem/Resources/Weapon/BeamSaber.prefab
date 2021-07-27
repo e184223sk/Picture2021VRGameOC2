@@ -4914,10 +4914,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 0
   WeaponName: BeamSaber
-  WeaponTexture: 
+  WeaponTexture: {fileID: 0}
   L: {x: 23.697, y: 44.177, z: -8.979}
   R: {x: -0.168, y: 12.984, z: -12.324}
-  powerSens: 700000
+  powerSens: 10000
   w: {x: 0, y: 0, z: 0}
   w2: {x: 0, y: 0, z: 0}
   ww: 0

@@ -41,15 +41,16 @@ public class LobbyItemChoicer : MonoBehaviour
         { 
             if (type == ItemType.Ability)
             {
-                if (Input.GetKeyDown(KeyCode.S))
+                if (Input.GetKeyDown(KeyCode.S) || VRInput.A)
                 {
+                    ResetAbility();
                     CoolDownStart();
                     switch (abilityType)
                     {
                         case AbilityType.Hover: Ability._FlyEnable = true; break;
                         case AbilityType.Jump: Ability._JumpUPEnable = true; break;
                         case AbilityType.SpeedUp: Ability._SpeedUPEnable = true; break;
-                        case AbilityType.PowerUp:  break;
+                        case AbilityType.PowerUp: RigidpowerUp.Enable_ = true; break;
                         case AbilityType.ReloadUp: GunBehavior.ReloadTimeUP__ENABLE = true; break;
                         case AbilityType.FireInterval: GunBehavior.IntervalUp__ENABLE = true; break;
                         default: Debug.Log("存在しないアビリティです"); break;
@@ -89,11 +90,12 @@ public class LobbyItemChoicer : MonoBehaviour
 
     void ResetAbility()
     {
-        Ability._FlyEnable = true;
-        Ability._JumpUPEnable = true;
-        Ability._SpeedUPEnable = true;
-        GunBehavior.IntervalUp__ENABLE = true;
-        GunBehavior.ReloadTimeUP__ENABLE = true;
+        Ability._FlyEnable = false;
+        Ability._JumpUPEnable = false;
+        Ability._SpeedUPEnable = false;
+        GunBehavior.IntervalUp__ENABLE = false;
+        GunBehavior.ReloadTimeUP__ENABLE = false;
+        RigidpowerUp.Enable_ = false;
     }
     
 }

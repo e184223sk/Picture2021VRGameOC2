@@ -7,8 +7,9 @@ public class PlayerCtrler : MonoBehaviour
 
     [SerializeField]
     public float _speed;
-
-
+     
+    [SerializeField]
+    public float _jumpForce;
 
     public bool _IsGround = true;
 
@@ -43,7 +44,10 @@ public class PlayerCtrler : MonoBehaviour
 
         _rigidbody.AddForce(transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed * Time.deltaTime), ForceMode.Acceleration);
 
-        if (VRInput.RGripPress || VRInput.LGripPress)
+        if (VRInput.RGrip && !_ability._flyable  && _IsGround)
+        {
+            _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        }
 
         if (VRInput.RStickPush)
         {
