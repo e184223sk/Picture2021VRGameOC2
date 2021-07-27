@@ -8,20 +8,20 @@ public class UIControl : MonoBehaviour
 {
     public RawImage RWeapon;
     public RawImage LWeapon;
-    public RawImage ability1;
-    public RawImage ability2;
-    public RawImage ability3;
+    public RawImage ability;
     public RawImage MiniMap;
     public Rect uvRect;
     public Text time;
-    public Text Reload;
     public Text Point;
-    public Text Barrage;
+    public Text RBarrage;
+    public Text LBarrage;
+    public Slider Rweaponslider;
+    public Slider Lweaponslider;
     public bool[] IsGetW = new bool[10];
     public bool[] IsGetA = new bool[10];
-    public bool RW, LW, A1, A2, A3, Lobby;
-    public int a, s, d, f, min , b ,Maxb;
-    public float sec, Osec, t,relotime;
+    public bool RWeaponTrigger, LWeaponTrigger, ABILITY, Lobby;
+    public int point,length, min , Rbarrage ,RMaxbarrage, Lbarrage, LMaxbarrage;
+    public float sec, Osec;
     public Data[] DataBase;
     public float speed;
     float x = 0.0f, y = 0.0f;
@@ -29,15 +29,13 @@ public class UIControl : MonoBehaviour
     {
         RWeapon = GameObject.Find("Canvas/RWeapon").GetComponent<RawImage>();
         LWeapon = GameObject.Find("Canvas/LWeapon").GetComponent<RawImage>();
-        ability1 = GameObject.Find("Canvas/Ability/Ability1").GetComponent<RawImage>();
-        ability2 = GameObject.Find("Canvas/Ability/Ability2").GetComponent<RawImage>();
-        ability3 = GameObject.Find("Canvas/Ability/Ability3").GetComponent<RawImage>();
+        ability = GameObject.Find("Canvas/Ability/Ability").GetComponent<RawImage>();
         MiniMap = GameObject.Find("Canvas/MiniMap").GetComponent<RawImage>();
         MiniMap.uvRect = new Rect(0, 0, 0.1f, 0.1f);
-        Barrage = GameObject.Find("Canvas/Barrage").GetComponent<Text>();
+        RBarrage = GameObject.Find("Canvas/RBarrage").GetComponent<Text>();
+        LBarrage = GameObject.Find("Canvas/LBarrage").GetComponent<Text>();
         time = GameObject.Find("Canvas/time").GetComponent<Text>();
         Point = GameObject.Find("Canvas/Point").GetComponent<Text>();
-        Reload = GameObject.Find("Canvas/Reload").GetComponent<Text>();
         min = 4;
         sec = 60F;
         Osec = 0;
@@ -50,43 +48,58 @@ public class UIControl : MonoBehaviour
             }
             if (IsGetA[t] == false)
             {
-                ability1.texture = null;
-                ability2.texture = null;
-                ability3.texture = null;
+                ability.texture = null;
             }
         }
-        Reload.text = "";
-        b = Maxb;
+        Rbarrage = RMaxbarrage;
+        Lbarrage = LMaxbarrage;
         Lobby = true;
     }
     void Update()
     {
-        if (RWeapon.texture == true || LWeapon.texture == true)
+        if (RWeapon.texture == true)
         {
             //残弾
-            if (b <= Maxb && b > 0)
+            if (Rbarrage <= RMaxbarrage && Rbarrage > 0)
             {
-                if (Input.GetKeyDown(KeyCode.A)) { b--; }
+                if (Input.GetKeyDown(KeyCode.S)) { Rbarrage--; }
             }
-            Barrage.text = "残弾： " + b + "/" + Maxb;
-            if (b == 0)
+            RBarrage.text = "残弾： " + Rbarrage + "/" + RMaxbarrage;
+            if (Rbarrage == 0)
             {
-                t += Time.deltaTime;
-                Reload.text = "リロード中…";
-                if (t >= relotime)
+                Rweaponslider.value += 0.5f * Time.deltaTime;
+                if (Rweaponslider.value >= 1)
                 {
-                    b = Maxb;
-                    t = 0;
+                    Rbarrage = RMaxbarrage;
+                    Rweaponslider.value = 0;
                 }
-            }
-            else
-            {
-                Reload.text = "";
             }
         }
         else
         {
-            Barrage.text = "";
+            RBarrage.text = "";
+        }
+        if (LWeapon.texture == true)
+        {
+            //残弾
+            if (Lbarrage <= LMaxbarrage && Lbarrage > 0)
+            {
+                if (Input.GetKeyDown(KeyCode.A)) { Lbarrage--; }
+            }
+            LBarrage.text = "残弾： " + Lbarrage + "/" + LMaxbarrage;
+            if (Lbarrage == 0)
+            {
+                Lweaponslider.value += 0.5f * Time.deltaTime;
+                if (Lweaponslider.value >= 1)
+                {
+                    Lbarrage = LMaxbarrage;
+                    Lweaponslider.value = 0;
+                }
+            }
+        }
+        else
+        {
+            LBarrage.text = "";
         }
         //画像
         for (int m = 0; m < 10; m++)
@@ -95,8 +108,8 @@ public class UIControl : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.X))
                 {
-                    RW = true;
-                    if (RW == true)
+                    RWeaponTrigger = true;
+                    if (RWeaponTrigger == true)
                     {
                         RWeapon.texture = DataBase[m].Wimage;
                     }
@@ -106,8 +119,8 @@ public class UIControl : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Z))
                 {
-                    LW = true;
-                    if (LW == true)
+                    LWeaponTrigger = true;
+                    if (LWeaponTrigger == true)
                     {
                         LWeapon.texture = DataBase[m].Wimage;
                     }
@@ -117,32 +130,10 @@ public class UIControl : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.C))
                 {
-                    A1 = true;
-                    if (A1 == true)
+                    ABILITY = true;
+                    if (ABILITY == true)
                     {
-                        ability1.texture = DataBase[m].Aimage;
-                    }
-                }
-            }
-            if (IsGetA[m] == true)
-            {
-                if (Input.GetKeyDown(KeyCode.V))
-                {
-                    A2 = true;
-                    if (A2 == true)
-                    {
-                        ability2.texture = DataBase[m].Aimage;
-                    }
-                }
-            }
-            if (IsGetA[m] == true)
-            {
-                if (Input.GetKeyDown(KeyCode.B))
-                {
-                    A3 = true;
-                    if (A3 == true)
-                    {
-                        ability3.texture = DataBase[m].Aimage;
+                        ability.texture = DataBase[m].Aimage;
                     }
                 }
             }
@@ -166,11 +157,12 @@ public class UIControl : MonoBehaviour
                 }
                 Osec = sec;
                 //ポイント
-                Point.text = "POINT ：　" + a * s * d * f;
+                Point.text = "POINT ：　" + point * length;
             }
             else
             {
-                SceneManager.LoadScene("lobby");
+                time.text = "TIME ：　00:00";
+                SceneManager.LoadScene("Result");
             }
         }
         else
