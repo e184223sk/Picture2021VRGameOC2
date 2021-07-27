@@ -10,6 +10,12 @@ public class BreakManager : MonoBehaviour
     Vector3 s;                                  //objectの初期座標
     Vector3 n;                                  //現在のobject座標
 
+    [RuntimeInitializeOnLoadMethod]
+    static void AWAKE_()
+    {
+        Total = 0;
+        Breakobj = 0;
+    }
     // Start is called before the first frame update
     void Start()
     {
