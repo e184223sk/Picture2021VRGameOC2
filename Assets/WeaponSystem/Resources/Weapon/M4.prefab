@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 1338547587911648588}
   - component: {fileID: 1338547587911648589}
   m_Layer: 0
-  m_Name: M4 1
+  m_Name: M4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,11 +168,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8b5091516931845bfc3873cbaa5f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 0
   WeaponName: M4
-  WeaponTexture: 
+  WeaponTexture: {fileID: 2800000, guid: 56ab6fece66b07c4897c9a2805fa0376, type: 3}
+  L: {x: 0, y: 0, z: 0}
+  R: {x: 0, y: 0, z: 0}
   fireSe: {fileID: 0}
   reloadSe: {fileID: 0}
-  side: 0
   gunType: 1
   FullAutoFireInterval: 0.061
   AutoReload: 0
