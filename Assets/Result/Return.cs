@@ -17,6 +17,7 @@ public class Return : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            DontDestroyObject.Destroy();
             Debug.Log("ロビー画面へ行けた");
             SceneManager.LoadScene("Lobby");
         }   

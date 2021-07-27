@@ -12,10 +12,10 @@ public class DontDestroyObject : MonoBehaviour
         DontDestroyOnLoad(ui);
     }
 
-    public void Destroy()
+    public static void Destroy()
     {
-        Destroy(player);
-        Destroy(ui);
-        Destroy(gameObject);
+        Destroy(me.player);
+        Destroy(me.ui);
+        Destroy(me.gameObject);
     }
 }
