@@ -4914,7 +4914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 0
   WeaponName: BeamSaber
-  WeaponTexture: {fileID: 0}
+  WeaponTexture: {fileID: 2800000, guid: d4ab344701460ca498ebe5eef91c02ff, type: 3}
   L: {x: 23.697, y: 44.177, z: -8.979}
   R: {x: -0.168, y: 12.984, z: -12.324}
   powerSens: 10000

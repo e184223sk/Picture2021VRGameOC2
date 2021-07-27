@@ -169,8 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: 0
-  WeaponName: M4
-  WeaponTexture: {fileID: 0}
+  WeaponName: G18c
+  WeaponTexture: {fileID: 2800000, guid: 098f2d72066d5754ba54ae308db0f20c, type: 3}
   L: {x: 0, y: 0, z: 0}
   R: {x: 0, y: 0, z: 0}
   fireSe: {fileID: 0}
