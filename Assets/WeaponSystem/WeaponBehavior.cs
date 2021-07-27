@@ -8,7 +8,7 @@ public class WeaponBehavior : MonoBehaviour
     public HandSide side;
     public enum HandSide { LEFT, RIGHT }
     public string WeaponName;
-    public string WeaponTexture;
+    public Texture2D WeaponTexture;
     public virtual int NowBullet() => -1;
     public virtual int MaxBullet() => -1;
     public virtual bool IsGUN() => false;

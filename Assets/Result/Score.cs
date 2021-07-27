@@ -15,10 +15,5 @@ public class Score : MonoBehaviour
         score = GameObject.Find("score").GetComponent<Text>();
         score.text = ("Score:" + BreakData.BreakingPercentage.ToString() + "%");
     }
-
-   
-    void Update()
-    {
-        
-    }
+     
 }

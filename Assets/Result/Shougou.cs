@@ -12,11 +12,6 @@ public class Shougou : MonoBehaviour
     void Start()
     {
         shougou = GameObject.Find("Shougou").GetComponent<Text>();
-    }
-
-    //表示
-    void Update()
-    {
         if (BreakData.BreakingPercentage < 10) shougou.text = ("見習いの破壊者");
         else if (BreakData.BreakingPercentage < 20) shougou.text = ("さすらいの破壊者");
         else if (BreakData.BreakingPercentage < 30) shougou.text = ("一人前の破壊者");
@@ -29,4 +24,5 @@ public class Shougou : MonoBehaviour
         else if (BreakData.BreakingPercentage < 100) shougou.text = ("破壊神");
         else shougou.text = ("究極の破壊神");
     }
+     
 }

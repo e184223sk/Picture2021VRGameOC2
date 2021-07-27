@@ -29,7 +29,7 @@ public class Monitor : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("反応したよ");
-        if(other.gameObject.GetComponent<Player>() != null)
+        if(other.gameObject.GetComponent<PlayerCtrler>() != null)
         {
             Video.Play();
         }
@@ -38,7 +38,7 @@ public class Monitor : MonoBehaviour
     //停止
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.GetComponent<Player>() != null)
+        if (other.gameObject.GetComponent<PlayerCtrler>() != null)
         {
             Video.Pause();
         }

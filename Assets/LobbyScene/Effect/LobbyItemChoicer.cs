@@ -84,8 +84,8 @@ public class LobbyItemChoicer : MonoBehaviour
         cooldown = true;
     }
 
-    void OnTriggerExit(Collider o) {   if (o.GetComponent<Dammy_PLayer>() != null) hit = false; }    
-    void OnTriggerStay(Collider o) {  if (o.GetComponent<Dammy_PLayer>() != null) hit = true; }
+    void OnTriggerExit(Collider o) {   if (o.GetComponent<PlayerCtrler>() != null) hit = false; }    
+    void OnTriggerStay(Collider o) {  if (o.GetComponent<PlayerCtrler>() != null) hit = true; }
 
     void ResetAbility()
     {
