@@ -17,8 +17,8 @@ public class UIControl : MonoBehaviour
     public Text LBarrage;
     public Slider Rweaponslider;
     public Slider Lweaponslider;
-    public bool[] IsGetW = new bool[10];
-    public bool[] IsGetA = new bool[10];
+    public bool[] IsGetW = new bool[10];//当たり判定
+    public bool[] IsGetA = new bool[10];//当たり判定その2
     public bool RWeaponTrigger, LWeaponTrigger, ABILITY, Lobby;
     public int point,length, min , Rbarrage ,RMaxbarrage, Lbarrage, LMaxbarrage;
     public float sec, Osec;
