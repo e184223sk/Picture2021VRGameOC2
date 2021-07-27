@@ -7,7 +7,7 @@ public class PlayerCtrler : MonoBehaviour
 
     [SerializeField]
     public float _speed;
-     
+
     [SerializeField]
     public float _jumpForce;
 
@@ -28,7 +28,6 @@ public class PlayerCtrler : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _ability = GetComponent<Ability>();
-        _GroundThre = 0.3f;
     }
 
     // Update is called once per frame
@@ -44,11 +43,7 @@ public class PlayerCtrler : MonoBehaviour
 
         _rigidbody.AddForce(transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed * Time.deltaTime), ForceMode.Acceleration);
 
-        if (VRInput.RGrip && !_ability._flyable  && _IsGround)
-        {
-            _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
-        }
-
+        
         if (VRInput.RStickPush)
         {
             Debug.Log("右手武器切り替え");
@@ -69,21 +64,16 @@ public class PlayerCtrler : MonoBehaviour
 
 
         // _rigidbody.position += ;
-        /*
-         if (!_ability._flyable)
-         {
-             if (VRInput.A)
-             {
-                 //ハイパー雑な着地判定
-                 if(Physics.Raycast(transform.position - new Vector3(0,0.8f,0), Vector3.down, _GroundThre))
-                 {
-                     _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
-                 }
 
-             }
-         }
-         else
-         {*/
+        if (!_ability._flyable && VRInput.RGrip)
+        {       //ハイパー雑な着地判定
+            if (Physics.Raycast(transform.position - new Vector3(0, 1f, 0), Vector3.down, _GroundThre))
+            {
+                _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+            }
+
+        }
+
 
         // }
 

@@ -47,19 +47,19 @@ public class LobbyItemChoicer : MonoBehaviour
                     CoolDownStart();
                     switch (abilityType)
                     {
-                        case AbilityType.Hover: Ability._FlyEnable = true; break;
-                        case AbilityType.Jump: Ability._JumpUPEnable = true; break;
-                        case AbilityType.SpeedUp: Ability._SpeedUPEnable = true; break;
-                        case AbilityType.PowerUp: RigidpowerUp.Enable_ = true; break;
-                        case AbilityType.ReloadUp: GunBehavior.ReloadTimeUP__ENABLE = true; break;
-                        case AbilityType.FireInterval: GunBehavior.IntervalUp__ENABLE = true; break;
+                        case AbilityType.Hover: Ability._FlyEnable = true; Debug.Log("ジェットパック");  break;
+                        case AbilityType.Jump: Ability._JumpUPEnable = true; Debug.Log("ジャンプ力アップ"); break;
+                        case AbilityType.SpeedUp: Ability._SpeedUPEnable = true; Debug.Log("スピードアップ"); break;
+                        case AbilityType.PowerUp: RigidpowerUp.Enable_ = true; Debug.Log("パワー！！"); break;
+                        case AbilityType.ReloadUp: GunBehavior.ReloadTimeUP__ENABLE = true; Debug.Log("ファストリロード"); break;
+                        case AbilityType.FireInterval: GunBehavior.IntervalUp__ENABLE = true; Debug.Log("ラピッドファイア"); break;
                         default: Debug.Log("存在しないアビリティです"); break;
                     }
                 }
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.A) || VRInput.A)
+                if (Input.GetKeyDown(KeyCode.A) || VRInput.X)
                 {
                     CoolDownStart();
                     if (ChangeWeapon.LeftNum == 0)
@@ -67,7 +67,7 @@ public class LobbyItemChoicer : MonoBehaviour
                     else
                         ChangeWeapon.SetLeft1(Instantiate(Resources.Load("Weapon/" + WeaponName)) as GameObject);
                 }
-                if (Input.GetKeyDown(KeyCode.S) || VRInput.X)
+                if (Input.GetKeyDown(KeyCode.S) || VRInput.A)
                 { 
                     CoolDownStart();
                     if (ChangeWeapon.RightNum == 0)

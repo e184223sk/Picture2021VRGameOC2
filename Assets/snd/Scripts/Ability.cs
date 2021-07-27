@@ -56,7 +56,7 @@ public class Ability : MonoBehaviour
         _player = GetComponent<PlayerCtrler>();
         _remainUsableTime = _usableTime;
         _remainCoolTime = _coolTime;
-        _FlyEnable = true;
+        _SpeedUPEnable = true;
     }
 
     // Update is called once per frame
@@ -71,15 +71,15 @@ public class Ability : MonoBehaviour
         if (_IsLobby) return;
 
         //アビリティON
-        if (_IsUsable && VRInput.LGrip )
+        if (_IsUsable && VRInput.LGrip)
         {
             _IsUsable = false;
             _IsUsing = true;
             Debug.Log("アビリティ発動！");
             //アビリティ発動
-            if (_SpeedUPEnable) { _player._speed *= _SpeedRate;  _usableTime = SpeedUPUsableTime; }
+            if (_SpeedUPEnable) { _player._speed *= _SpeedRate; _usableTime = SpeedUPUsableTime; }
             if (_JumpUPEnable) { _player._jumpForce *= _JumpRate; _usableTime = JumpUPUsableTime; }
-            if (_FlyEnable) { _flyable = true;  _usableTime = JetpackUsableTime; }
+            if (_FlyEnable) { _flyable = true; _usableTime = JetpackUsableTime; }
         }
 
 
@@ -88,8 +88,7 @@ public class Ability : MonoBehaviour
 
         //使用中の処理
         if (_IsUsing)
-        {
-
+        { 
             if (_flyable && VRInput.RGripPress)
             {
                 _player._rigidbody.AddForce(Vector3.up * _player._jumpForce / 100, ForceMode.Acceleration);
@@ -122,5 +121,5 @@ public class Ability : MonoBehaviour
                 Debug.Log("クールタイム終了！");
             }
         }
-    } 
+    }
 }
