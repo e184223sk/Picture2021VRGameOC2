@@ -39,7 +39,7 @@ public class VRInput : MonoBehaviour
     #region Position
     static GameObject RHandObj, LHandObj, BodyCenter,Camera;
 
-    private void Start()
+    private void Awake()
     {
         RHandObj = GameObject.Find("RightControllerAnchor");
         LHandObj = GameObject.Find("LeftControllerAnchor");
