@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: develop_abilitybox_hovers 1
+  m_Name: develop_abilitybox_power
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHABLEND_ON _EMISSION
   m_LightmapFlags: 1
@@ -37,11 +37,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 36ba8b7136b1b8048abd4783d1f29afa, type: 3}
+        m_Texture: {fileID: 2800000, guid: e4660de3520f01545921e5eb61da4899, type: 3}
         m_Scale: {x: -1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 36ba8b7136b1b8048abd4783d1f29afa, type: 3}
+        m_Texture: {fileID: 2800000, guid: e4660de3520f01545921e5eb61da4899, type: 3}
         m_Scale: {x: -1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -74,5 +74,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.79872733, g: 0.8641577, b: 0.8773585, a: 1}
-    - _EmissionColor: {r: 0.53647035, g: 0.7303915, b: 1.6482857, a: 1}
+    - _Color: {r: 0.6603774, g: 0.3338275, b: 0.252314, a: 1}
+    - _EmissionColor: {r: 1.9514673, g: 1.040096, b: 1.0033487, a: 1}
