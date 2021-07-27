@@ -5,13 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Return : MonoBehaviour
-{
-    
-    void Start()
-    {
-        
-    }
-
+{ 
     //ロビー画面へ遷移
     void Update()
     {

@@ -4,7 +4,7 @@ public class Lobby_ResetPanelArea : MonoBehaviour
 {
     public void OnTriggerEnter(Collider o)
     { 
-        if (o.transform.GetComponent<Dammy_PLayer>() != null)
+        if (o.transform.GetComponent<PlayerCtrler>() != null)
             Reset.me.reborn();
     } 
 }
