@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class RPG7_bulletEnableCtrl : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject SwitchingCG;
+    GunBehavior gb;
+
     void Start()
     {
-        
+        gb = GetComponent<GunBehavior>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        SwitchingCG.active = gb.magazine.Now > 0;
     }
 }
