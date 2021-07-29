@@ -22,7 +22,8 @@ public class UIControl : MonoBehaviour
     public bool Lobby; 
     public float sec;
     float x = 0.0f, y = 0.0f;
-   
+
+    bool _IsEnd = false;
      
     public Texture2D fly, jump, speed, power, reload, fireSpeed;
     void Start()
@@ -60,9 +61,12 @@ public class UIControl : MonoBehaviour
         //時間情報・得点  -------------------------------------------------------------
         if (!Lobby)
         {
+            if (_IsEnd) return;
+
             sec -= Time.deltaTime;
             if (sec <= 0F)
             {
+                _IsEnd = true;
                 sec = 0;
                 SceneManager.LoadScene("Result");
             }

@@ -25,8 +25,6 @@ public class VRInputTest : MonoBehaviour
 
         Debug.Log("右スティック　：　" + VRInput.RStick.ToString());
         Debug.Log("左スティック　：　" + VRInput.LStick.ToString());
-        */
-        Debug.Log(VRInput.RStickPush ? "右スティック押してる" : "");
-        Debug.Log(VRInput.LStickPush ? "左スティック押してる" : "");
+        */ 
     }
 }

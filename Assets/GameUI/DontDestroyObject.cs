@@ -7,12 +7,13 @@ public class DontDestroyObject : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         me = this;
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(ui);
     }
 
-    public static void Destroy()
+    public static void _Destroy()
     {
         Destroy(me.player);
         Destroy(me.ui);
