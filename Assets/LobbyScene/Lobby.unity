@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.33014685, g: 0.4529009, b: 0.61999166, a: 1}
+  m_IndirectSpecularColor: {r: 0.33014694, g: 0.45290118, b: 0.6199922, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -131,12 +131,12 @@ PrefabInstance:
     - target: {fileID: 1347769147714295860, guid: 2c023d46af64b494e9e9255f65cc186e,
         type: 3}
       propertyPath: JumpUPUsableTime
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1347769147714295860, guid: 2c023d46af64b494e9e9255f65cc186e,
         type: 3}
       propertyPath: JetpackUsableTime
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1347769147714295860, guid: 2c023d46af64b494e9e9255f65cc186e,
         type: 3}
@@ -9617,7 +9617,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015895726}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: d5a4323ef1454214daccee7ef98d9618, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: f44df46955ca3994b99e37f78b5d4218, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -9630,12 +9630,14 @@ VideoPlayer:
   m_DataSource: 0
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
-  m_TargetAudioSources: []
-  m_DirectAudioVolumes: []
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
   m_Url: 
-  m_EnabledAudioTracks: 
-  m_DirectAudioMutes: 
-  m_ControlledAudioTrackCount: 0
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 1
