@@ -36,8 +36,15 @@ public class VRInput : MonoBehaviour
 
     #endregion
 
+    #region UP
+
+    public static bool LGripUP { get { return OVRInput.GetUp(OVRInput.RawButton.LHandTrigger); } }
+
+    #endregion
+
+
     #region Position
-    static GameObject RHandObj, LHandObj, BodyCenter,Camera;
+    static GameObject RHandObj, LHandObj, BodyCenter, Camera;
 
     private void Awake()
     {
@@ -45,7 +52,7 @@ public class VRInput : MonoBehaviour
         LHandObj = GameObject.Find("LeftControllerAnchor");
         BodyCenter = GameObject.Find("Player");
     }
-    
+
 
     public static Transform LHandPos { get { return LHandObj.transform; } }
 

@@ -47,27 +47,32 @@ public class PlayerCtrler : MonoBehaviour
         Vector3 rotation = new Vector3(0, InputTracking.GetLocalRotation(XRNode.Head).eulerAngles.y, 0);
 
 
+        if (Ability._FlyEnable && VRInput.RGripPress)
+        {
+           _rigidbody.AddForce(Vector3.up * _jumpForce /15, ForceMode.Acceleration);
+        }
+        //移動
+        //スピードアップアビリティを使ってない時 速度制限
+        if (!Ability._SpeedUPEnable && !Ability._IsUsing)
+        {
+            if (_rigidbody.velocity.magnitude < _MaxSpeed)
+                _rigidbody.AddForce(transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed * Time.deltaTime), ForceMode.Acceleration);
+        }
+        else
+        {
+            _rigidbody.AddForce(transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed * Time.deltaTime), ForceMode.Acceleration);
+        }
+
         //ハイパー雑な着地判定
         if (Physics.Raycast(transform.position - new Vector3(0, 1f, 0), Vector3.down, _GroundThre))
         {
-            Debug.Log("着地ンぐ");
             //ジャンプ
             if (!_ability._flyable && VRInput.RGrip)
             {
                 _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
             }
 
-            //移動
-            //スピードアップアビリティを使ってない時 速度制限
-            if (!Ability._SpeedUPEnable && !Ability._IsUsing)
-            {
-                if (_rigidbody.velocity.magnitude < _MaxSpeed)
-                    _rigidbody.AddForce(transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed * Time.deltaTime), ForceMode.Acceleration);
-            }
-            else
-            {
-                _rigidbody.AddForce(transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed * Time.deltaTime), ForceMode.Acceleration);
-            }
+            
         }
     }
 }

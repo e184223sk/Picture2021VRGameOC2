@@ -70,21 +70,33 @@ public class Ability : MonoBehaviour
     public void UseAbility()
     {
 
-        if (_IsLobby) return;
+
 
         //アビリティON
-        if (_IsUsable && VRInput.LGrip)
+        if (VRInput.LGrip)
         {
+            if (_IsUsing) return;
+
+            Debug.Log("オン");
             _IsUsable = false;
             _IsUsing = true;
-            Debug.Log("アビリティ発動！");
+
             //アビリティ発動
-            if (_SpeedUPEnable) { _player._speed *= _SpeedRate; _usableTime = _remainUsableTime = SpeedUPUsableTime; _coolTime = _remainCoolTime = SpeedUPCT; }
-            if (_JumpUPEnable) { _player._jumpForce *= _JumpRate; _usableTime = _remainUsableTime = JumpUPUsableTime; _coolTime = _remainCoolTime = JumpUPCT; }
-            if (_FlyEnable) { _flyable = true; _usableTime = _remainUsableTime = JetpackUsableTime; _coolTime = _remainCoolTime = JetPackCT; }
+            if (_SpeedUPEnable) { _player._speed *= _SpeedRate; }
+            if (_JumpUPEnable) { _player._jumpForce *= _JumpRate; }
+            if (_FlyEnable) { _flyable = true; }
         }
-
-
+        //アビリティオフ
+        if (VRInput.LGripUP)
+        {
+            if (!_IsUsing) return;
+            Debug.Log("OFF");
+            _IsUsing = false;
+            if (_SpeedUPEnable) { _player._speed /= _SpeedRate; }
+            if (_JumpUPEnable) { _player._jumpForce /= _JumpRate; }
+            if (_FlyEnable) { _flyable = false; }
+        }
+        /*
         //アビリティが使用可能ならここから先はいらん！
         if (_IsUsable) return;
 
@@ -124,7 +136,7 @@ public class Ability : MonoBehaviour
                 _IsUsable = true;
 
             }
-        }
-     
+        }*/
+
     }
 }

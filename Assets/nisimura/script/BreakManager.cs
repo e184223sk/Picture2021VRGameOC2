@@ -30,6 +30,7 @@ public class BreakManager : MonoBehaviour
         n = transform.position;
         if ((s.x - n.x > 2 || s.x - n.x < -2 || s.y - n.y > 5 || s.y - n.y < -5 || s.z - n.z > 2 || s.z - n.z < -2))
         {
+            AudioManager.Play(s);
             Breakobj++;
             IsBreak = true;
             Destroy(this);
