@@ -1,11 +1,12 @@
 ・RPG
-・meteor 
-・hammer
 ・M4
-
 ・G18c
-・鉄球
 ・ビームSaber
+
+
+・グレネード
+・hammer
+・鉄球
 ・フリー素材のクレジット表記
 
 ・ハード：VIVEBOY：完成(Sasaki)　
