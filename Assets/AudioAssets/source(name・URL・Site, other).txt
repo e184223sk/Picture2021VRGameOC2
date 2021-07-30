@@ -6,3 +6,4 @@ Texture2/https://amachamusic.chagasi.com/mp3/texture2.mp3
 
 爆発音：https://soundeffect-lab.info/　の"爆発２"
 銃声：https://soundeffect-lab.info/　の"拳銃で撃つ"
+崩壊音:https://soundeffect-lab.info/　の"マッチの火を吹き消す"
