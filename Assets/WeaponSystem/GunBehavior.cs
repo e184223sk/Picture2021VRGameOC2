@@ -55,6 +55,7 @@ public class GunBehavior : WeaponBehavior
     void Start()
     {
         source = gameObject.AddComponent<AudioSource>();
+        source.volume /= 2;
     }
     
     void Update()

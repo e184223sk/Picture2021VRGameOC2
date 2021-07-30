@@ -12,6 +12,7 @@ public class BgmSetter : MonoBehaviour
     {
         v = -1;
         output = gameObject.AddComponent<AudioSource>();
+        output.volume /= 2;
     }
 
     void Update()

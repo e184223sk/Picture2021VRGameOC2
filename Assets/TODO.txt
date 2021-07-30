@@ -1,7 +1,6 @@
-・hammer
 ・鉄球
-・建物の配置
-・SE
-・VIVEBOY完成 (Pic/電圧/信号)
-・VIVEBOYをUNITYで動作 
-・最終調整
+・VIVEBOY完成 
+・建物の配置               20
+・最終調整                 50
+--------------------------
+・VIVEBOYをUNITYで動作     60
