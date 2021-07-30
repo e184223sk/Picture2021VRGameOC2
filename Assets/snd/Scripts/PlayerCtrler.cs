@@ -10,15 +10,13 @@ public class PlayerCtrler : MonoBehaviour
 
     public float _MaxSpeed;
 
+    public float _defaultSpeed;
+    public float _defaultJumpForce;
+
 
     [SerializeField]
     public float _jumpForce;
 
-
-
-    public bool _IsGround = true;
-
-    RaycastHit _hit;
 
     //何m浮いたらジャンプとみなすか
     public float _GroundThre;
@@ -47,30 +45,26 @@ public class PlayerCtrler : MonoBehaviour
         Vector3 rotation = new Vector3(0, InputTracking.GetLocalRotation(XRNode.Head).eulerAngles.y, 0);
 
 
-
-        //スピードアップアビリティを使ってない時 速度制限
-        if (!Ability._SpeedUPEnable && !_ability._IsUsing )
+        //ハイパー雑な着地判定
+        if (Physics.Raycast(transform.position - new Vector3(0, 1f, 0), Vector3.down, _GroundThre))
         {
-            if (_rigidbody.velocity.magnitude < _MaxSpeed)
-                _rigidbody.AddForce(transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed * Time.deltaTime), ForceMode.Acceleration);
-        }
-        else
-        {
-            _rigidbody.AddForce(transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed * Time.deltaTime), ForceMode.Acceleration);
-        }
-
-
-        // _rigidbody.position += ;
-
-        if (!_ability._flyable && VRInput.RGrip)
-        {       //ハイパー雑な着地判定
-            if (Physics.Raycast(transform.position - new Vector3(0, 1f, 0), Vector3.down, _GroundThre))
+            //ジャンプ
+            if (!_ability._flyable && VRInput.RGrip)
             {
                 _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
             }
 
+            //移動
+            //スピードアップアビリティを使ってない時 速度制限
+            if (!Ability._SpeedUPEnable && !_ability._IsUsing)
+            {
+                if (_rigidbody.velocity.magnitude < _MaxSpeed)
+                    _rigidbody.AddForce(transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed * Time.deltaTime), ForceMode.Acceleration);
+            }
+            else
+            {
+                _rigidbody.AddForce(transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed * Time.deltaTime), ForceMode.Acceleration);
+            }
         }
-
     }
-
 }

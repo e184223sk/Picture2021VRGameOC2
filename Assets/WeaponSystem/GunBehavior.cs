@@ -30,7 +30,8 @@ public class GunBehavior : WeaponBehavior
 
     [Header("Bullet Data"), Space(10)]
     public BulletData magazine;
-
+    public override int NowBullet() =>magazine.Now;
+    public override int MaxBullet() => magazine.Max;
 
     public override bool IsReloading() { return isReloading; }
     bool isReloading;
@@ -72,18 +73,21 @@ public class GunBehavior : WeaponBehavior
         {
             if (magazine.Now < magazine.Max)
             {
+                magazine.Now = magazine.Now - 1;
                 isReloading = true;
                 source.PlayOneShot(reloadSe);
             }
         }
-        else if (gunType == GunType.SemiAuto && FIRE_DOWN) FIRE(); 
+        else if (gunType == GunType.SemiAuto && FIRE_DOWN) {
+            FIRE();
+        }
         else if ((gunType == GunType.FullAuto))
         {
             FireCnt += Time.deltaTime;
             if (FIRE_PRESS)
             {
                 if (FireCnt >= FullAutoFireInterval)
-                {
+                { 
                     FireCnt = 0;
                     FIRE();
                 }
@@ -102,10 +106,12 @@ public class GunBehavior : WeaponBehavior
     {
         if (magazine.Now > 0)
         {
-            if (RejectName != "")     Instantiate(Resources.Load(RejectName), rejectPoint.position, rejectPoint.rotation);
-            if (FireEffectName != "") Instantiate(Resources.Load(FireEffectName), effectPoint.position, effectPoint.rotation);
-            if (BulletName != "")     Instantiate(Resources.Load(BulletName), firePoint.position, firePoint.rotation);
-           if(fireSe != null)  source.PlayOneShot(fireSe); magazine.Now--;
+            Instantiate(Resources.Load(RejectName), rejectPoint.position, rejectPoint.rotation);
+            Instantiate(Resources.Load(FireEffectName), effectPoint.position, effectPoint.rotation);
+            Instantiate(Resources.Load(BulletName), firePoint.position, firePoint.rotation);
+            source.PlayOneShot(fireSe); 
+            magazine.Now--;
+            Debug.Log("NOW:" + magazine.Now);
         }
     }
 
@@ -170,7 +176,7 @@ public class BulletData
     [SerializeField,Range(0,1000)]
     int now, max;
     
-    public int Now { get => now; set => now = now < 0 ? 0 : (now > max ? max : now); }
+    public int Now { get => now; set { now = value; now = now < 0 ? 0 : (now > max ? max : now); } }
     public int Max { get => max; set => max = max < 1 ? 1 : max; }
 
     public void Update()
