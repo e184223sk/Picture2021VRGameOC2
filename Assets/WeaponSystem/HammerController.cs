@@ -14,7 +14,7 @@ public class HammerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        p = transform.Find("BigCollider/Particle System").GetComponent<ParticleSystem>();
+        p = transform.Find("Particle System").GetComponent<ParticleSystem>();
         xx = p.startSpeed;
     }
     Vector3 e, e2;
