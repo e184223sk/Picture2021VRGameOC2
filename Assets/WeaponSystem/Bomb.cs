@@ -2,6 +2,10 @@
 
 public class Bomb : MonoBehaviour
 {
-    void Start() => Destroy(gameObject.transform.root.gameObject, 2);
-    void Update() => transform.localScale += Vector3.one * 17* Time.deltaTime;
+    void Start()
+    {
+        Destroy(gameObject.transform.root.gameObject, 3);
+        Destroy(this, 1.7f);
+    }
+    void Update() => transform.localScale += Vector3.one *3400* Time.deltaTime;
 }

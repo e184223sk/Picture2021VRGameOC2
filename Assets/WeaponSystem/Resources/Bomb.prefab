@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7153402908752172402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.000032578, y: 0.00005477, z: 0.0000060309}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7153402908788726381}
   m_RootOrder: 0
@@ -86,7 +86,7 @@ Transform:
   m_GameObject: {fileID: 7153402908788726374}
   m_LocalRotation: {x: -0.5360415, y: -0.4887899, z: 0.4618609, w: 0.51032203}
   m_LocalPosition: {x: 6.63, y: 0.208, z: -0.189}
-  m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
+  m_LocalScale: {x: 0.0013573798, y: 0.0013573798, z: 0.0013573798}
   m_Children:
   - {fileID: 7153402908752172405}
   m_Father: {fileID: 0}
@@ -108,7 +108,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -175,7 +175,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20.07
+      scalar: 22.59
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -666,7 +666,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.001
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1423,8 +1423,8 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 0.9004272, b: 0.4764151, a: 0}
         key1: {r: 1, g: 0.4406838, b: 0, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0.6901961}
-        key3: {r: 0, g: 0, b: 0, a: 0}
+        key2: {r: 0, g: 0, b: 0, a: 1}
+        key3: {r: 0, g: 0, b: 0, a: 0.7411765}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
@@ -1439,15 +1439,15 @@ ParticleSystem:
         ctime7: 0
         atime0: 0
         atime1: 7325
-        atime2: 52043
-        atime3: 60909
-        atime4: 65535
-        atime5: 0
+        atime2: 39707
+        atime3: 53970
+        atime4: 61680
+        atime5: 65535
         atime6: 0
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 5
+        m_NumAlphaKeys: 6
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4883,8 +4883,8 @@ Rigidbody:
   m_Mass: 15.94
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
