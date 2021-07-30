@@ -102,10 +102,10 @@ public class GunBehavior : WeaponBehavior
     {
         if (magazine.Now > 0)
         {
-            Instantiate(Resources.Load(RejectName), rejectPoint.position, rejectPoint.rotation);
-            Instantiate(Resources.Load(FireEffectName), effectPoint.position, effectPoint.rotation);
-            Instantiate(Resources.Load(BulletName), firePoint.position, firePoint.rotation);
-            source.PlayOneShot(fireSe); magazine.Now--;
+            if (RejectName != "")     Instantiate(Resources.Load(RejectName), rejectPoint.position, rejectPoint.rotation);
+            if (FireEffectName != "") Instantiate(Resources.Load(FireEffectName), effectPoint.position, effectPoint.rotation);
+            if (BulletName != "")     Instantiate(Resources.Load(BulletName), firePoint.position, firePoint.rotation);
+           if(fireSe != null)  source.PlayOneShot(fireSe); magazine.Now--;
         }
     }
 

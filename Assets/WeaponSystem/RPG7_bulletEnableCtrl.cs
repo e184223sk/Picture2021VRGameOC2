@@ -9,6 +9,7 @@ public class RPG7_bulletEnableCtrl : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("aaaxxx:" + name);
         gb = GetComponent<GunBehavior>();
     }
     
