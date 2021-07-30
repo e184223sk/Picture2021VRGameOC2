@@ -43,10 +43,12 @@ public class Ability : MonoBehaviour
 
 
     public float SpeedUPUsableTime;
-
     public float JumpUPUsableTime;
     public float JetpackUsableTime;
 
+    public float SpeedUPCT;
+    public float JumpUPCT;
+    public float JetPackCT;
 
 
     PlayerCtrler _player;
@@ -77,9 +79,9 @@ public class Ability : MonoBehaviour
             _IsUsing = true;
             Debug.Log("アビリティ発動！");
             //アビリティ発動
-            if (_SpeedUPEnable) { _player._speed *= _SpeedRate; _usableTime = SpeedUPUsableTime; }
-            if (_JumpUPEnable) { _player._jumpForce *= _JumpRate; _usableTime = JumpUPUsableTime; }
-            if (_FlyEnable) { _flyable = true; _usableTime = JetpackUsableTime; }
+            if (_SpeedUPEnable) { _player._speed *= _SpeedRate; _usableTime = _remainUsableTime = SpeedUPUsableTime; _coolTime = _remainCoolTime = SpeedUPCT; }
+            if (_JumpUPEnable) { _player._jumpForce *= _JumpRate; _usableTime = _remainUsableTime = JumpUPUsableTime; _coolTime = _remainCoolTime = JumpUPCT; }
+            if (_FlyEnable) { _flyable = true; _usableTime = _remainUsableTime = JetpackUsableTime; _coolTime = _remainCoolTime = JetPackCT; }
         }
 
 
@@ -88,7 +90,7 @@ public class Ability : MonoBehaviour
 
         //使用中の処理
         if (_IsUsing)
-        { 
+        {
             if (_flyable && VRInput.RGripPress)
             {
                 _player._rigidbody.AddForce(Vector3.up * _player._jumpForce / 100, ForceMode.Acceleration);
@@ -115,10 +117,12 @@ public class Ability : MonoBehaviour
 
             if (_remainCoolTime < 0)
             {
-                _remainCoolTime = _coolTime;
+
+                if (_SpeedUPEnable) { _coolTime = _remainCoolTime = SpeedUPCT; }
+                if (_JumpUPEnable) { _coolTime = _remainCoolTime = JumpUPCT; }
+                if (_FlyEnable) { _coolTime = _remainCoolTime = JetPackCT; }
                 _IsUsable = true;
 
-                Debug.Log("クールタイム終了！");
             }
         }
     }

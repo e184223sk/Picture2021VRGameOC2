@@ -130,6 +130,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1347769147714295860, guid: 2c023d46af64b494e9e9255f65cc186e,
         type: 3}
+      propertyPath: JumpUPCT
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347769147714295860, guid: 2c023d46af64b494e9e9255f65cc186e,
+        type: 3}
+      propertyPath: JetPackCT
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347769147714295860, guid: 2c023d46af64b494e9e9255f65cc186e,
+        type: 3}
+      propertyPath: SpeedUPCT
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347769147714295860, guid: 2c023d46af64b494e9e9255f65cc186e,
+        type: 3}
       propertyPath: JumpUPUsableTime
       value: 15
       objectReference: {fileID: 0}
@@ -217,6 +232,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347769147714295867, guid: 2c023d46af64b494e9e9255f65cc186e,
+        type: 3}
+      propertyPath: _MaxSpeed
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1347769147714295867, guid: 2c023d46af64b494e9e9255f65cc186e,
         type: 3}
@@ -2397,7 +2417,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501567265}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: af3ab4851de1c57499def1dd22aaa132, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: abbf944ad9158094987f3453501a2d2f, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -12442,7 +12462,7 @@ PrefabInstance:
     - target: {fileID: 8585625622887525169, guid: eb2b124d6cb88ab4e83e23f24e71597f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 104.5
+      value: 99.76
       objectReference: {fileID: 0}
     - target: {fileID: 8585625622933560936, guid: eb2b124d6cb88ab4e83e23f24e71597f,
         type: 3}
@@ -12452,7 +12472,7 @@ PrefabInstance:
     - target: {fileID: 8585625622933560936, guid: eb2b124d6cb88ab4e83e23f24e71597f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 171
+      value: 160.9
       objectReference: {fileID: 0}
     - target: {fileID: 8585625622933560937, guid: eb2b124d6cb88ab4e83e23f24e71597f,
         type: 3}

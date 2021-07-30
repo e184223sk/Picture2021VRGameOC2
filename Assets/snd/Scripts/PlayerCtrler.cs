@@ -8,8 +8,13 @@ public class PlayerCtrler : MonoBehaviour
     [SerializeField]
     public float _speed;
 
+    public float _MaxSpeed;
+
+
     [SerializeField]
     public float _jumpForce;
+
+
 
     public bool _IsGround = true;
 
@@ -41,25 +46,17 @@ public class PlayerCtrler : MonoBehaviour
         Vector3 velocity = new Vector3(VRInput.LStick.x, 0, VRInput.LStick.y);
         Vector3 rotation = new Vector3(0, InputTracking.GetLocalRotation(XRNode.Head).eulerAngles.y, 0);
 
-        _rigidbody.AddForce(transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed * Time.deltaTime), ForceMode.Acceleration);
 
-        
-        if (VRInput.RStickPush)
-        {
-            Debug.Log("右手武器切り替え");
-        }
-        if (VRInput.LStickPush)
-        {
-            Debug.Log("左手武器切り替え");
-        }
 
-        if (VRInput.Y)
+        //スピードアップアビリティを使ってない時 速度制限
+        if (!Ability._SpeedUPEnable && !_ability._IsUsing )
         {
-            Debug.Log("左手武器リロード");
+            if (_rigidbody.velocity.magnitude < _MaxSpeed)
+                _rigidbody.AddForce(transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed * Time.deltaTime), ForceMode.Acceleration);
         }
-        if (VRInput.B)
+        else
         {
-            Debug.Log("右手武器リロード");
+            _rigidbody.AddForce(transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed * Time.deltaTime), ForceMode.Acceleration);
         }
 
 
@@ -74,40 +71,6 @@ public class PlayerCtrler : MonoBehaviour
 
         }
 
-
-        // }
-
-        /*
-         * 緊急姿勢制御
-        if (VRInput.RStickPush && transform.rotation.eulerAngles.magnitude > 15)
-        {
-            transform.position = new Vector3(transform.position.x, 2, transform.position.z);
-            transform.rotation = Quaternion.Euler(Vector3.zero);
-        }*/
-        /*
-        if(武器がセミオートなら)
-        {
-            if(VRInput.RTrigger)
-            {
-                射撃   
-            }
-            if(VRInput.LTrigger)
-            {
-                射撃   
-            }
-        }
-        if(武器がフルオートなら)
-        {
-            if(VRInput.RTriggerPress)
-            {
-                射撃   
-            }
-            if(VRInput.LTriggerPress)
-            {
-                射撃   
-            }
-        }
-        */
     }
 
 }
