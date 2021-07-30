@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeWeapon
+public class ChangeWeapon : MonoBehaviour
 {
-    public static void SetLeft0(GameObject g) { Weapon[0, 0] = g; Update(); }
-    public static void SetLeft1(GameObject g)  {  Weapon[0, 1] = g; Update(); }
-    public static void SetRight0(GameObject g)  {  Weapon[1, 0] = g; Update(); }
-    public static void SetRight1(GameObject g)  {  Weapon[1, 1] = g; Update(); }
+    public static void SetLeft0(GameObject g) { Delete(0, 0); Weapon[0, 0] = g; Update(); }
+    public static void SetLeft1(GameObject g)  { Delete(0, 1); Weapon[0, 1] = g; Update(); }
+    public static void SetRight0(GameObject g)  { Delete(1, 0); Weapon[1, 0] = g; Update(); }
+    public static void SetRight1(GameObject g)  { Delete(1, 1); Weapon[1, 1] = g; Update(); }
     public static int LeftNum  { get => L ? 0 : 1; }
     public static int RightNum { get => R ? 0 : 1; }
     public static void ChangeL() { L = !L; Update(); }
@@ -56,5 +56,11 @@ public class ChangeWeapon
         }
         
         
-    } 
+    }
+
+    static void Delete(int v, int r)
+    {
+        if (Weapon[v, r] != null) Destroy(Weapon[v,r].gameObject);
+    }
 }
+
