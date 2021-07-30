@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HammerController : MonoBehaviour
 {
-    public float powerSens = 10;
+    public float powerSens = 10, SPEED;
     ParticleSystem p;
     float xx, data;
     public Vector3 w, w2;
@@ -22,6 +22,7 @@ public class HammerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.Rotate(Vector3.left * Time.deltaTime * SPEED,Space.Self);
         bc.size = Vector3.one;
         w = p.transform.position - e;
         w2 = VRInput.BodyCenterPos.position - e2;
