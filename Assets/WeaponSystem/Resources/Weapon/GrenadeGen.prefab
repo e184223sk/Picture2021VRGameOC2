@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e8526b4306417c45bca31aef3f3ae30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CG: {fileID: 0}
+  CG: {fileID: 7532887854867375017}
   ThrowingThreshold: 0.6
   Power: 1000
 --- !u!114 &7532887854852178728
