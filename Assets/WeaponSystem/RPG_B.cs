@@ -22,7 +22,7 @@ public class RPG_B : MonoBehaviour
         if (i < 3 && i > 0.2f)
         {
             r.AddForce(Vector3.up * Time.deltaTime * hover, ForceMode.Acceleration);
-            r.AddTorque(Vector3.forward * Time.deltaTime * hover,ForceMode.Acceleration);
+            r.AddTorque(Vector3.forward / 100 * Time.deltaTime * hover,ForceMode.Acceleration);
         }
         xx += Time.deltaTime;
         r.AddForce(startDir * power * Time.deltaTime, ForceMode.Acceleration);
