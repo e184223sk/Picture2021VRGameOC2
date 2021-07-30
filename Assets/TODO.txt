@@ -1,12 +1,7 @@
 ・hammer
 ・鉄球
-
 ・建物の配置
-・フリー素材のクレジット表記
 ・SE
-
-・VIVEBOY完成　(Pic/電圧/信号)
-・VIVEBOYをUNITYで動作試験 
-・VIVEBOY設定画面(現在COM関連がたぶん完成/WindSysのUIだけはできた) 
-
+・VIVEBOY完成 (Pic/電圧/信号)
+・VIVEBOYをUNITYで動作 
 ・最終調整
