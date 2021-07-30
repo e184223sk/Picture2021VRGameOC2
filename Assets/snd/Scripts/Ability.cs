@@ -35,7 +35,7 @@ public class Ability : MonoBehaviour
     public float _remainUsableTime;
 
     //使用中かどうか
-    public bool _IsUsing = false;
+    public static bool _IsUsing = false;
 
     //使用可能かどうか
     public bool _IsUsable = true;
@@ -126,9 +126,5 @@ public class Ability : MonoBehaviour
             }
         }
      
-    }
-    public static void ResetAbility()
-    {
-        //if()
     }
 }

@@ -29,6 +29,7 @@ public class ChangeWeapon : MonoBehaviour
         {
             Weapon[0, 0].transform.parent = VRInput.LHandPos;
             Weapon[0, 0].transform.localPosition = Vector3.zero;
+            Weapon[0, 0].transform.localRotation = Quaternion.identity;
             Weapon[0, 0].active = L;
             Weapon[0, 0].transform.GetComponent<WeaponBehavior>().side = WeaponBehavior.HandSide.LEFT;
         }
@@ -37,6 +38,7 @@ public class ChangeWeapon : MonoBehaviour
         {
             Weapon[0, 1].transform.parent = VRInput.LHandPos;
             Weapon[0, 1].transform.localPosition = Vector3.zero;
+            Weapon[0, 1].transform.localRotation = Quaternion.identity;
             Weapon[0, 1].active = !L;
             Weapon[0, 1].transform.GetComponent<WeaponBehavior>().side = WeaponBehavior.HandSide.LEFT;
         }
@@ -44,7 +46,8 @@ public class ChangeWeapon : MonoBehaviour
         {
             Weapon[1, 0].transform.parent = VRInput.RHandPos;
             Weapon[1, 0].transform.localPosition = Vector3.zero;
-            Weapon[1, 0].active = R;
+            Weapon[1, 0].active = R; 
+            Weapon[1, 0].transform.localRotation = Quaternion.identity;
             Weapon[1, 0].transform.GetComponent<WeaponBehavior>().side = WeaponBehavior.HandSide.RIGHT;
         }
         if (Weapon[1, 1] != null)
@@ -52,6 +55,7 @@ public class ChangeWeapon : MonoBehaviour
             Weapon[1, 1].transform.parent = VRInput.RHandPos; 
             Weapon[1, 1].transform.localPosition = Vector3.zero;  
             Weapon[1, 1].active = !R; 
+            Weapon[1, 1].transform.localRotation = Quaternion.identity;
             Weapon[1, 1].transform.GetComponent<WeaponBehavior>().side = WeaponBehavior.HandSide.RIGHT;
         }
         

@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 7838876271522686033}
   - component: {fileID: 8726322248280945944}
   - component: {fileID: 8041502128665190986}
+  - component: {fileID: -1004846412240992104}
   m_Layer: 0
   m_Name: Mk2
   m_TagString: Untagged
@@ -300,3 +301,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &-1004846412240992104
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6526298288726988354}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.51
+  m_Height: 8.16
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.86, z: 0}

@@ -39,6 +39,8 @@ public class PlayerCtrler : MonoBehaviour
         PlayerMove();
     }
 
+    RaycastHit hit;
+
     public void PlayerMove()
     {
         Vector3 velocity = new Vector3(VRInput.LStick.x, 0, VRInput.LStick.y);
@@ -48,6 +50,7 @@ public class PlayerCtrler : MonoBehaviour
         //ハイパー雑な着地判定
         if (Physics.Raycast(transform.position - new Vector3(0, 1f, 0), Vector3.down, _GroundThre))
         {
+            Debug.Log("着地ンぐ");
             //ジャンプ
             if (!_ability._flyable && VRInput.RGrip)
             {
@@ -56,7 +59,7 @@ public class PlayerCtrler : MonoBehaviour
 
             //移動
             //スピードアップアビリティを使ってない時 速度制限
-            if (!Ability._SpeedUPEnable && !_ability._IsUsing)
+            if (!Ability._SpeedUPEnable && !Ability._IsUsing)
             {
                 if (_rigidbody.velocity.magnitude < _MaxSpeed)
                     _rigidbody.AddForce(transform.rotation * (Quaternion.Euler(rotation) * velocity * _speed * Time.deltaTime), ForceMode.Acceleration);

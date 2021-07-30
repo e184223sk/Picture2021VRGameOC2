@@ -23,8 +23,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338547586034289680}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.261, y: 0.168, z: -0}
+  m_LocalRotation: {x: 0.0029804027, y: 0.72890425, z: 0.0031732726, w: 0.68460184}
+  m_LocalPosition: {x: 0.017266393, y: 0.13752507, z: 0.27644777}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1338547587911648588}
@@ -53,8 +53,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338547586235132477}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0317, y: 0.1337, z: -0.0185}
+  m_LocalRotation: {x: 0.0029804027, y: 0.72890425, z: 0.0031732726, w: 0.68460184}
+  m_LocalPosition: {x: -0.016478539, y: 0.13433962, z: 0.033571746}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1338547587911648588}
@@ -83,8 +83,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338547586352623058}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.276, y: 0.179, z: 0}
+  m_LocalRotation: {x: 0.0029804027, y: 0.72890425, z: 0.0031732726, w: 0.68460184}
+  m_LocalPosition: {x: 0.017283916, y: 0.17752509, z: 0.27661896}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 763624998418764192}
@@ -114,8 +114,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338547587210238315}
-  m_LocalRotation: {x: 0.47920233, y: -0.5199665, z: 0.47920233, w: 0.5199665}
-  m_LocalPosition: {x: -0.296, y: 0.13000001, z: 0}
+  m_LocalRotation: {x: 0.6805551, y: 0.023128182, z: -0.021129517, w: 0.73202693}
+  m_LocalPosition: {x: 0.01853633, y: 0.12835316, z: 0.29615235}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1338547587911648588}
@@ -176,13 +176,13 @@ MonoBehaviour:
   fireSe: {fileID: 0}
   reloadSe: {fileID: 0}
   gunType: 1
-  FullAutoFireInterval: 0.061
+  FullAutoFireInterval: 0.14
   AutoReload: 0
   ReloadCnt: 0
   ReloadTime: 4.21
   magazine:
-    now: 470
-    max: 661
+    now: 173
+    max: 173
   firePoint: {fileID: 1338547587210238314}
   rejectPoint: {fileID: 1338547586235132476}
   effectPoint: {fileID: 1338547586034289695}

@@ -41,7 +41,7 @@ public class LobbyItemChoicer : MonoBehaviour
         { 
             if (type == ItemType.Ability)
             {
-                if (Input.GetKeyDown(KeyCode.S) || VRInput.A)
+                if (Input.GetKeyDown(KeyCode.S) || VRInput.A && !Ability._IsUsing)
                 {
                     ResetAbility();
                     CoolDownStart();
@@ -59,7 +59,7 @@ public class LobbyItemChoicer : MonoBehaviour
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.A) || VRInput.X)
+                if (Input.GetKeyDown(KeyCode.A) || VRInput.X )
                 {
                     CoolDownStart();
                     if (ChangeWeapon.LeftNum == 0)
