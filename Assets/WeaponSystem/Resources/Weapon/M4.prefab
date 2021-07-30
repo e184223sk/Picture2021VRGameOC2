@@ -173,7 +173,7 @@ MonoBehaviour:
   WeaponTexture: {fileID: 2800000, guid: eee1e694ea3702b4694ac69ee86f7ff8, type: 3}
   L: {x: 0, y: 0, z: 0}
   R: {x: 0, y: 0, z: 0}
-  fireSe: {fileID: 0}
+  fireSe: {fileID: 8300000, guid: 5b4f555823d73724e83ea6b8f399beea, type: 3}
   reloadSe: {fileID: 0}
   gunType: 1
   FullAutoFireInterval: 0.061
