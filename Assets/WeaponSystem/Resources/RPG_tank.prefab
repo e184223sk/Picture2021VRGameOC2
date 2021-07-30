@@ -4880,8 +4880,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ed7796c582d7b43b40e5c148e067f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 2304.29
-  hover: 900
+  power: 1804.29
+  hover: 500
 --- !u!54 &-4653994597547543099
 Rigidbody:
   m_ObjectHideFlags: 0
