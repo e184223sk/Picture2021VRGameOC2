@@ -204,8 +204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CG: {fileID: 7532887854867375017}
-  ThrowingThreshold: 0.6
-  Power: 1000
+  ThrowingThreshold: 0.1
+  Power: 0.24
 --- !u!114 &7532887854852178728
 MonoBehaviour:
   m_ObjectHideFlags: 0

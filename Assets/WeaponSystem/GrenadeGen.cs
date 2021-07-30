@@ -21,12 +21,11 @@ public class GrenadeGen : MonoBehaviour
         ww = Mathf.Abs(w.x) + Mathf.Abs(w.y) + Mathf.Abs(w.z);
        
         float data = ww * ww;
-        bool xx = GetComponent<WeaponBehavior>().side == WeaponBehavior.HandSide.LEFT ? VRInput.LTrigger : VRInput.RTrigger;
-
-        if (xx && data > ThrowingThreshold)
+        var i = GetComponent<WeaponBehavior>(); 
+        if (i.side == WeaponBehavior.HandSide.LEFT ? VRInput.LTrigger : VRInput.RTrigger && data > ThrowingThreshold)
         {
             var x = Instantiate(Resources.Load("Mk2"), transform.position, transform.rotation) as GameObject;
-            x.GetComponent<Rigidbody>().AddRelativeForce(-x.transform.up * Power);
+            x.GetComponent<Rigidbody>().AddRelativeForce((i.side == WeaponBehavior.HandSide.LEFT ? VRInput.LHandPos.forward : VRInput.RHandPos.forward) * -1 * Power * data);
             v = 0;
         }
         e2 = VRInput.BodyCenterPos.position;
