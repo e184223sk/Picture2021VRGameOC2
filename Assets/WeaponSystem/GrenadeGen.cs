@@ -21,7 +21,9 @@ public class GrenadeGen : MonoBehaviour
         ww = Mathf.Abs(w.x) + Mathf.Abs(w.y) + Mathf.Abs(w.z);
        
         float data = ww * ww;
-        if (data > ThrowingThreshold)
+        bool xx = GetComponent<WeaponBehavior>().side == WeaponBehavior.HandSide.LEFT ? VRInput.LTrigger : VRInput.RTrigger;
+
+        if (xx && data > ThrowingThreshold)
         {
             var x = Instantiate(Resources.Load("Mk2"), transform.position, transform.rotation) as GameObject;
             x.GetComponent<Rigidbody>().AddRelativeForce(-x.transform.up * Power);
