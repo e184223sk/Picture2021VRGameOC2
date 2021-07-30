@@ -125,5 +125,10 @@ public class Ability : MonoBehaviour
 
             }
         }
+     
+    }
+    public static void ResetAbility()
+    {
+        //if()
     }
 }

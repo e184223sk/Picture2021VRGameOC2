@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9202712391366718285}
   - component: {fileID: 8277241235551083069}
   - component: {fileID: 5048674138608719925}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4823,7 +4823,7 @@ GameObject:
   - component: {fileID: 6595529449839556267}
   - component: {fileID: 7946934274269523577}
   - component: {fileID: 4123636388307984045}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4837,8 +4837,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2622209709891480310}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.27945107, y: -1.5274749, z: -0.8542688}
+  m_LocalRotation: {x: 0, y: 0, z: 0.5, w: 0.8660254}
+  m_LocalPosition: {x: -0.27945107, y: -0.65, z: 1.33}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 8397696794544356192}
@@ -4846,7 +4846,7 @@ Transform:
   - {fileID: 4125541766487495880}
   m_Father: {fileID: 8286664823613712634}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 60}
 --- !u!33 &7946934274269523577
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4907,8 +4907,8 @@ GameObject:
   - component: {fileID: 4125541766487495880}
   - component: {fileID: 6513746968745258712}
   - component: {fileID: 7735717397094592587}
-  - component: {fileID: 5980533565054424350}
-  m_Layer: 0
+  - component: {fileID: 552825343834878890}
+  m_Layer: 11
   m_Name: BigCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4959,8 +4959,8 @@ MonoBehaviour:
   w: {x: 0, y: 0, z: 0}
   w2: {x: 0, y: 0, z: 0}
   ww: 0
-  dataThreshold: 3.43
---- !u!54 &5980533565054424350
+  dataThreshold: 0.04
+--- !u!54 &552825343834878890
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4986,7 +4986,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8397696794544356192}
   - component: {fileID: 8397696794544356193}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5030,7 +5030,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8397696794926547661}
   - component: {fileID: 8397696794926547662}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5073,10 +5073,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8286664823613712634}
-  - component: {fileID: 8397696794481725196}
   - component: {fileID: 7685941691982569367}
   - component: {fileID: 8508400524036690078}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5098,22 +5097,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &8397696794481725196
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8668291752991928896}
-  serializedVersion: 2
-  m_Mass: 41.62
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &7685941691982569367
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,6 +28,9 @@ public class UIControl : MonoBehaviour
     public Texture2D fly, jump, speed, power, reload, fireSpeed;
     void Start()
     {
+        Lweaponslider = transform.Find("LSlider").GetComponent<Slider>();//園田のばーか
+        Rweaponslider = transform.Find("RSlider").GetComponent<Slider>();//園田のばーか
+
         RWeapon = transform.Find("RWeapon").GetComponent<RawImage>();
         LWeapon = transform.Find("LWeapon").GetComponent<RawImage>();
         RSWeapon = transform.Find("RsWeapon").GetComponent<RawImage>();
@@ -61,6 +64,8 @@ public class UIControl : MonoBehaviour
         //時間情報・得点  -------------------------------------------------------------
         if (!Lobby)
         {
+            time.text = "TIME ：　" + ((int)sec) / 60 + ":" + ((int)sec) % 60;
+            Point.text = "POINT ：　" + (int)BreakData.BreakingPercentage;
             if (_IsEnd) return;
 
             sec -= Time.deltaTime;
@@ -70,8 +75,6 @@ public class UIControl : MonoBehaviour
                 sec = 0;
                 SceneManager.LoadScene("Result");
             }
-            time.text = "TIME ：　" + ((int)sec) / 60 + ":" + ((int)sec) % 60;
-            Point.text = "POINT ：　" + (int)BreakData.BreakingPercentage;
         }
         else
         {
@@ -96,9 +99,14 @@ public class UIControl : MonoBehaviour
         LWeapon.color  = LWeapon.texture != null ? Color.white : Color.black;
         LSWeapon.color = LSWeapon.texture != null ? Color.white : Color.black;
         RWeapon.color  = RWeapon.texture != null ? Color.white : Color.black;
-        RSWeapon.color = RSWeapon.texture != null ? Color.white : Color.black; 
-        Lweaponslider.value = !LB.IsGUN() ? LB.ReloadingP() : 1f;
-        Rweaponslider.value = !RB.IsGUN() ? RB.ReloadingP() : 1f;
+        RSWeapon.color = RSWeapon.texture != null ? Color.white : Color.black;
+        if (Lweaponslider == null) Debug.LogError("aaa");
+        if (Rweaponslider == null) Debug.LogError("aaa1");
+        Lweaponslider.enabled = LB.IsGUN();
+        Rweaponslider.enabled = RB.IsGUN();
+        
+        Lweaponslider.value = LB.ReloadingP();
+        Rweaponslider.value = RB.ReloadingP();
         //弾数
         LBarrage.text = LB.IsGUN() ? (LB.NowBullet() + "/" + LB.MaxBullet()) : "";
         RBarrage.text = RB.IsGUN() ? (RB.NowBullet() + "/" + RB.MaxBullet()) : "";
