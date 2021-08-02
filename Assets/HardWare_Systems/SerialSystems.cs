@@ -20,7 +20,7 @@ public class SerialSystems : MonoBehaviour
         try
         {
 
-            if (port.IsOpen)
+            if (port != null &&  port.IsOpen)
             {
                 port.Close();
                 port.Dispose();
@@ -42,6 +42,7 @@ public class SerialSystems : MonoBehaviour
         }
         catch (Exception e)
         {
+            Debug.Log("SPEr::"+ e.Message);
             return e.Message;
         }
 
@@ -50,6 +51,11 @@ public class SerialSystems : MonoBehaviour
     public string ReadLine() => port.ReadLine();
     public void Write(string s) => port.Write(s);
     public void WriteLine(string s) => port.WriteLine(s);
+
+    public virtual void DISPOSE()
+    { 
+    
+    }
 
     private void OnApplicationQuit()
     {

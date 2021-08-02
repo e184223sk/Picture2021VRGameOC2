@@ -51,6 +51,11 @@ public class VRInput : MonoBehaviour
         RHandObj = GameObject.Find("RightControllerAnchor");
         LHandObj = GameObject.Find("LeftControllerAnchor");
         BodyCenter = GameObject.Find("Player");
+
+        //軽量化の設定
+        OVRManager.tiledMultiResLevel = OVRManager.TiledMultiResLevel.LMSHigh;
+
+
     }
 
 

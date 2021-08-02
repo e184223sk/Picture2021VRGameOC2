@@ -40,15 +40,30 @@ public  class ViveSystem : SerialSystems
 
 
     static float set(float raw) => raw > 1 ? 1 : (raw < 0 ? 0 : raw);
-    static float[] Power = new float[10]; 
- 
+    static float[] Power = new float[10];
+
+    public override void DISPOSE()
+    {
+        ViveSystem.Body = 0;
+        ViveSystem.Head = 0;
+        ViveSystem.LeftElbow = 0;
+        ViveSystem.RightElbow = 0;
+        ViveSystem.LeftWrist = 0;
+        ViveSystem.RightWrist = 0;
+        ViveSystem.LeftKnee = 0;
+        ViveSystem.RightKnee = 0;
+        ViveSystem.LeftAnkle = 0;
+        ViveSystem.RightAnkle = 0;
+
+    }
+
     public void Update()
     {
         if (!IsSetting) return;
  
         for (int y = 0; y < 10; y++)
         {
-            WriteLine("abcdefg"[y] + "0123456789ABCDEFGHIJKLMNOPQRSTUV".Substring((int)(Power[y] * 31), 1));
+            WriteLine("abcdefghij"[y] + "0123456789ABCDEFGHIJKLMNOPQRSTUV".Substring((int)(Power[y] * 31), 1));
             for (int x = 0; x < 100; x++) ; //データ処理待ちの為の保険
         }
     }

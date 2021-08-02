@@ -11,6 +11,7 @@ public class LockPlayer : MonoBehaviour
     {
         _player = GameObject.Find("Player");
         _player.GetComponent<Rigidbody>().useGravity = false;
+        _player.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
     }
 
     // Update is called once per frame

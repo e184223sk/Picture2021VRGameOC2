@@ -56,14 +56,16 @@ public class GunBehavior : WeaponBehavior
     {
         source = gameObject.AddComponent<AudioSource>();
         source.volume /= 2;
+        ReloadTime /= 2; 
+
     }
-    
+
     void Update()
     {
         if (isReloading)
         {
             ReloadCnt += Time.deltaTime;
-            if (ReloadCnt > ReloadTime)
+            if (ReloadCnt > (ReloadTimeUP__ENABLE ? ReloadTime/2 : ReloadTime))
             {
                 ReloadCnt = 0;
                 magazine.Now = magazine.Max;
@@ -87,8 +89,11 @@ public class GunBehavior : WeaponBehavior
             FireCnt += Time.deltaTime;
             if (FIRE_PRESS)
             {
-                if (FireCnt >= FullAutoFireInterval)
-                { 
+                if (FireCnt >= ((IntervalUp__ENABLE ? 0.7f : 1) * FullAutoFireInterval))
+                {
+                    if (side == HandSide.LEFT) ViveSetter.LH();
+                    if (side == HandSide.RIGHT) ViveSetter.RH();
+
                     FireCnt = 0;
                     FIRE();
                 }

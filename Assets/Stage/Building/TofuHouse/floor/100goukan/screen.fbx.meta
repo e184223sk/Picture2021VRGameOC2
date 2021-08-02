@@ -12,27 +12,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: side4
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: screen
-    second: {fileID: 2100000, guid: f76a573387f2d1d478bf329692955acc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: screen_edge
-    second: {fileID: 2100000, guid: aa5c1ee9747b5644691d8478061c3fd8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: screen_fram
-    second: {fileID: 2100000, guid: aaba9a34892b8ee46980b528a3d06a6e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: screen_fram2
-    second: {fileID: 2100000, guid: cc5ff0ea435007a4e971748594f73b65, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0

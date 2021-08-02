@@ -11,22 +11,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: side3
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: bottom
-    second: {fileID: 2100000, guid: e5b0cbcfa4315ab4fbfda739b58f2e99, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: bottom2
-    second: {fileID: 2100000, guid: 721da8744f227324e8ef5c5e7a4b3583, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert5
-    second: {fileID: 2100000, guid: 96b4b1685fd8dcf4d905d97f266ea7be, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0

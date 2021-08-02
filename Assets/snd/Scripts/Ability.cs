@@ -58,7 +58,7 @@ public class Ability : MonoBehaviour
         _player = GetComponent<PlayerCtrler>();
         _remainUsableTime = _usableTime;
         _remainCoolTime = _coolTime;
-        _SpeedUPEnable = true;
+        _FlyEnable= true;
     }
 
     // Update is called once per frame
@@ -77,8 +77,6 @@ public class Ability : MonoBehaviour
         {
             if (_IsUsing) return;
 
-            Debug.Log("オン");
-            _IsUsable = false;
             _IsUsing = true;
 
             //アビリティ発動
@@ -90,7 +88,6 @@ public class Ability : MonoBehaviour
         if (VRInput.LGripUP)
         {
             if (!_IsUsing) return;
-            Debug.Log("OFF");
             _IsUsing = false;
             if (_SpeedUPEnable) { _player._speed /= _SpeedRate; }
             if (_JumpUPEnable) { _player._jumpForce /= _JumpRate; }

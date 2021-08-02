@@ -17,7 +17,6 @@ public class Reset : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(BreakManagerInlobby.rBreakobj + "/" + BreakManagerInlobby.rTotal);
         if (BreakManagerInlobby.rBreakobj * 1.0f/BreakManagerInlobby.rTotal > 0.8f)
         {
             //Debug.Log(item.gameObject + "に破壊処理いれたまるー");

@@ -7,6 +7,7 @@ public class AutoGetCompornennt : MonoBehaviour
 {
     GameObject[] game;
 
+    
     public void DataSet_GameObject()
     {
         game = FindObjectsOfType(typeof(GameObject)) as GameObject[];

@@ -33,7 +33,14 @@ public class BreakManager : MonoBehaviour
             AudioManager.Play(s);
             Breakobj++;
             IsBreak = true;
-            Destroy(this);
+            //Destroy(this);
+            Invoke("Delete", 3f);
         }
+    }
+
+    void Delete()
+    {
+        this.gameObject.SetActive(false);
+        Destroy(this);
     }
 }

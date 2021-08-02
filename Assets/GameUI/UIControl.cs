@@ -42,7 +42,7 @@ public class UIControl : MonoBehaviour
         LBarrage = transform.Find("LBarrage").GetComponent<Text>();
         time = transform.Find("time").GetComponent<Text>();
         Point = transform.Find("Point").GetComponent<Text>();
-        sec = 300F;
+        sec = 180F;
         Lobby = true;
     }
     void Update()
@@ -64,6 +64,8 @@ public class UIControl : MonoBehaviour
         //時間情報・得点  -------------------------------------------------------------
         if (!Lobby)
         {
+            if (!CountDown._GameStart) return;
+
             time.text = "TIME ：　" + ((int)sec) / 60 + ":" + ((int)sec) % 60;
             Point.text = "POINT ：　" + (int)BreakData.BreakingPercentage;
             if (_IsEnd) return;
@@ -100,8 +102,6 @@ public class UIControl : MonoBehaviour
         LSWeapon.color = LSWeapon.texture != null ? Color.white : Color.black;
         RWeapon.color  = RWeapon.texture != null ? Color.white : Color.black;
         RSWeapon.color = RSWeapon.texture != null ? Color.white : Color.black;
-        if (Lweaponslider == null) Debug.LogError("aaa");
-        if (Rweaponslider == null) Debug.LogError("aaa1");
         Lweaponslider.enabled = LB.IsGUN();
         Rweaponslider.enabled = RB.IsGUN();
         
